@@ -1,0 +1,13 @@
+* {
+	margin:0;
+	padding:0;
+}
+
+header{
+	padding:2% 0% 2.5% 4%;
+	background-color: #222;
+}
+
+header img{
+	width:270px;
+}
