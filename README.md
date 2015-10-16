@@ -1,4 +1,4 @@
-# Niagara Instant Feedback - NIFee
+# Instantify
 
 Final group project "Place specific Computing with Android" in the course DA401A - Application Development for Android at Malmö University.   
 
