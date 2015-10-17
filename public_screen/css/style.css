@@ -1,6 +1,7 @@
 * {
 	margin:0;
 	padding:0;
+	font-family: 'HelveticaNeue-Light', sans-serif;
 }
 
 header{
@@ -11,4 +12,66 @@ header{
 
 header img{
 	width:270px;
+}
+
+.box{
+	position: relative;
+	margin:15% 0% !important;
+	border:1px solid #ddd;
+	padding:2%;
+	text-align: center;
+	margin:auto;
+	clear: both;
+    overflow: hidden;
+}
+
+.box h2{
+	margin:5% 0 10% 0;
+	
+	text-align: center;
+}
+
+.box form input[type=text]{
+	font-family: 'HelveticaNeue', sans-serif;
+	font-size: 1.2em;
+	border:none;
+	border-bottom:1px solid #ccc;
+	width:90%;
+	height:40px;
+	padding: 0 0 0 2%;
+}
+
+.box form button{
+	margin:10% 5% 5% 0%;
+	display:block;
+	width:30%;
+	height:40px;
+	box-shadow: 2px 2px 5px 0px rgba(50,50,50,.5);
+	background-color:#ccc;
+	font-size: 1.3em;
+	border:none;
+	float:right;
+}
+
+/* Styling of placeholder text in forms */
+
+.box form ::-webkit-input-placeholder {
+   font-family: 'HelveticaNeue-Light', sans-serif;
+}
+
+.box form :-moz-placeholder { /* Firefox 18- */
+    font-family: 'HelveticaNeue-Light', sans-serif;
+}
+
+.box form::-moz-placeholder {  /* Firefox 19+ */
+    font-family: 'HelveticaNeue-Light', sans-serif;
+}
+
+.box form:-ms-input-placeholder {  
+    font-family: 'HelveticaNeue-Light', sans-serif;
+}
+
+/* Remove blue outline on form elements */
+input:focus, select:focus, textarea:focus, button:focus {
+    outline: none;
 }
