@@ -1,5 +1,6 @@
 (function(){
 var app = angular.module('app', ['firebase']);
+var tempQuestionList = [];
     
     app.controller('MessageController', function($scope){
         //MessageController responsible for labels and stuff on webpage
@@ -25,11 +26,24 @@ var app = angular.module('app', ['firebase']);
             question_queue: {"testkey" : question}
             });
             
-            //console.log(question, courseID);    
+            console.log(question, courseID);    
         }
     });   
 
     app.controller('SaveController', function($scope){
+
+        /*alert($('#courseID').val());
+        alert($('#question').val());
+        if ( $('#courseID').val() != ""){
+            tempQuestionList.push($('#courseID').val());
+        }
+        tempQuestionList.push($('#question').val());*/
+
+        $scope.saveData = function(courseID, question){
+            tempID = courseID
+            tempQuestionList.push(question);
+        };
+ 
         $(function(){
             $('.hide-element').on("click",function(){
                 $('#courseID').css({
@@ -40,16 +54,22 @@ var app = angular.module('app', ['firebase']);
                     'display':'none'
                 });
 
-
                 $('.view-question').append('<h2 class="header-question">View questions</h2>');
-                $('.box').append('<div class="body-question">testing</div>');
+                $('.box').append('<div class="body-question"></div>');
 
-                $('.body-question').append('<p>' + $('#courseID').val() + '</p>');
+                $('.body-question').append('<p>' + tempID + '</p>');
+                for (var i = 0; i < tempQuestionList.length; i++) {
+                    $('.body-question').append('<p>' + tempQuestionList[i] + '</p>');
+                };
+                
+            
 
+                console.log('hej');
 
 
             });
         });
+
 
     }) 
 })();

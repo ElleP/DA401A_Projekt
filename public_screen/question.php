@@ -15,8 +15,9 @@
 							<form>
 								<input ng-model="courseID" id="courseID" type="text" placeholder={{msgID}}></input>
 								<input ng-model="question" id="question" type="text" placeholder={{msgInput}}></input>
-								<a href="wordcloud.php"><input type="button" ng-click="submitData(courseID, question)" value={{btnSubmit}}></input></a>
-								<input ng-controller="SaveController" type="button" class="hide-element" ng-click="SaveData(courseID, question)" value={{btnSave}}></input>
+
+								<input type="button" ng-click="submitData(courseID, question)" value={{btnSubmit}}></input>
+								<input ng-controller="SaveController" type="button" class="hide-element" ng-click="saveData(courseID, question)" value={{btnSave}}></input>
 							</form>
 						</div>
 						<div class="view-question">
