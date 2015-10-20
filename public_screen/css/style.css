@@ -1,3 +1,7 @@
+/* CSS-file for projekt Instantify */
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,600,400italic,600italic,700,700italic,800,800italic);
+@import url(https://fonts.googleapis.com/css?family=Raleway:400,100,200,300,500,600,700,800,900);
+@import url(https://fonts.googleapis.com/css?family=Muli:400,300,300italic,400italic);
 * {
 	margin:0;
 	padding:0;
@@ -11,14 +15,15 @@ header{
 }
 
 header img{
-	width:270px;
+	width:230px;
 }
 
 /* Styling for .box and elements in .box surrounding form */
 .box{
-	font-family: 'HelveticaNeue-Light', sans-serif;
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 400;
 	position: relative;
-	margin:15% 0% !important;
+	margin:12% 0% !important;
 	border:1px solid #ddd;
 	box-shadow: 1px 1px 1px 0px rgba(150,150,150,.5);
 	padding:2%;
@@ -29,12 +34,15 @@ header img{
 }
 
 .box h2{
+	color:#444;
 	margin:5% 0 10% 0;
 	text-align: center;
 }
 
 .box form input[type=text]{
-	font-size: 1.2em;
+	font-size: 1.35em;
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 300;
 	border:none;
 	border-bottom:1px solid #ccc;
 	width:90%;
@@ -42,19 +50,44 @@ header img{
 	padding: 0 0 0 2%;
 }
 
+.box form input[type=text]:first-child{
+	margin: -4% 0 5% 0;
+}
+
 .box form button{
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 300;
 	margin:10% 5% 5% 0%;
 	display:block;
 	width:35%;
 	height:45px;
 	box-shadow: 2px 2px 5px 0px rgba(50,50,50,.5);
-	background-color:#ccc;
+	background-color:#ddd;
 	font-size: 1.3em;
 	border:none;
 	float:right;
+}
+
+::-webkit-input-placeholder {
+	transition: opacity ease 1s;
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+	transition: opacity ease 1s;
+}
+
+:-ms-input-placeholder {  
+	transition: opacity ease 1s;
 }
 
 /* Remove blue outline on form elements */
 input:focus, select:focus, textarea:focus, button:focus {
     outline: none;
 }
+
+input:focus::-webkit-input-placeholder, input:focus::-moz-placeholder, input:focus::-ms-input-placeholder {
+    opacity: 0;
+}
+
+
+
