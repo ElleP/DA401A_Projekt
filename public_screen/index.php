@@ -10,7 +10,6 @@
 				<div class="col-md-6 col-md-offset-3">
 					<div class="box">
 						
-		
 					</div><!--End of .box-->
 				</div><!--End of .col-->
 			</div><!--End of .row-->

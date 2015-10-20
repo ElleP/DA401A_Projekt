@@ -15,7 +15,7 @@ header{
 }
 
 header img{
-	width:270px;
+	width:230px;
 }
 
 /* Styling for .box and elements in .box surrounding form */
@@ -23,7 +23,7 @@ header img{
 	font-family: 'Open Sans', sans-serif;
 	font-weight: 400;
 	position: relative;
-	margin:15% 0% !important;
+	margin:12% 0% !important;
 	border:1px solid #ddd;
 	box-shadow: 1px 1px 1px 0px rgba(150,150,150,.5);
 	padding:2%;
@@ -50,6 +50,10 @@ header img{
 	padding: 0 0 0 2%;
 }
 
+.box form input[type=text]:first-child{
+	margin: -4% 0 5% 0;
+}
+
 .box form button{
 	font-family: 'Open Sans', sans-serif;
 	font-weight: 300;
@@ -65,18 +69,25 @@ header img{
 }
 
 ::-webkit-input-placeholder {
-}
-
-:-moz-placeholder { /* Firefox 18- */
+	transition: opacity ease 1s;
 }
 
 ::-moz-placeholder {  /* Firefox 19+ */
+	transition: opacity ease 1s;
 }
 
 :-ms-input-placeholder {  
+	transition: opacity ease 1s;
 }
 
 /* Remove blue outline on form elements */
 input:focus, select:focus, textarea:focus, button:focus {
     outline: none;
 }
+
+input:focus::-webkit-input-placeholder, input:focus::-moz-placeholder, input:focus::-ms-input-placeholder {
+    opacity: 0;
+}
+
+
+
