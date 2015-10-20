@@ -15,7 +15,6 @@
 							<form>
 								<input ng-model="courseID" id="courseID" type="text" placeholder={{msgID}}></input>
 								<input ng-model="question" id="question" type="text" placeholder={{msgInput}}></input>
-
 								<input type="button" ng-click="submitData(courseID, question)" value={{btnSubmit}}></input>
 								<input ng-controller="SaveController" type="button" class="hide-element" ng-click="saveData(courseID, question)" value={{btnSave}}></input>
 							</form>

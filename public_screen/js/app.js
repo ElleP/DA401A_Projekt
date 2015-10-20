@@ -62,14 +62,10 @@ var tempQuestionList = [];
                     $('.body-question').append('<p>' + tempQuestionList[i] + '</p>');
                 };
                 
-            
-
                 console.log('hej');
 
 
             });
         });
-
-
     }) 
 })();
