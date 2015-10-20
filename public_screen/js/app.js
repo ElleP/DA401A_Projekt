@@ -50,8 +50,8 @@ var app = angular.module('app', ['firebase']);
         //$scope.question = "why this print?";
         //$scope.data = []
         
-        $scope.submitData = function(question){
-            console.log(question);    
+        $scope.submitData = function(courseID, question){
+            console.log("Kurs: " + courseID + "question: " + question);    
         }
     }]);
     
