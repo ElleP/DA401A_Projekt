@@ -54,7 +54,7 @@ header img{
 	margin: -4% 0 5% 0;
 }
 
-.box form button{
+.box form input[type=button]{
 	font-family: 'Open Sans', sans-serif;
 	font-weight: 300;
 	margin:10% 5% 5% 0%;

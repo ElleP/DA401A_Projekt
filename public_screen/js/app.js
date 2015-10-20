@@ -38,6 +38,7 @@ var app = angular.module('app', ['firebase']);
     });
     
     app.controller('MessageController', function($scope){
+        $scope.msgID='Course ID';
         $scope.msgCreate='Create question';
         $scope.btnSave='Save';
         $scope.msgInput='Type question here';
