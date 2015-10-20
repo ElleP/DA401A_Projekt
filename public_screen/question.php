@@ -8,11 +8,22 @@
 			<div id="row">
 				<div class="col-md-6 col-md-offset-3">
 					<div ng-controller="MessageController" class="box">
-						<h2>{{msgCreate}}</h2>
-						<form method="" action="">
-							<input ng-model="question" type="text" placeholder={{msgInput}}></input>
-							<input type="button" ng-click="submitData()" value={{btnSave}}></input>
-						</form>
+						<div class="header-question">
+							<h2>{{msgCreate}}</h2>
+						</div>
+						<div class="body-question">
+							<form>
+								<input ng-model="courseID" id="courseID" type="text" placeholder={{msgID}}></input>
+								<input ng-model="question" id="question" type="text" placeholder={{msgInput}}></input>
+								<a href="wordcloud.php"><input type="button" ng-click="submitData(courseID, question)" value={{btnSubmit}}></input></a>
+								<input ng-controller="SaveController" type="button" class="hide-element" ng-click="SaveData(courseID, question)" value={{btnSave}}></input>
+							</form>
+						</div>
+						<div class="view-question">
+
+
+
+						</div>
 					</div><!--End of .box-->
 				</div><!--End of .col-->
 			</div><!--End of .row-->

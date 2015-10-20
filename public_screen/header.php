@@ -1,5 +1,6 @@
 <html>
 <head>
+	<meta charset="utf-8">
 	<title>Instantify</title>
 	<link href="css/style.css" rel="stylesheet" type="text/css">
 
@@ -24,4 +25,13 @@
 <body>
 	<header>
 		<img src="img/instantify.png" alt="Logo">
+
+		<nav>
+			<ul>
+				<li>New Question</li>
+				<li>View Questions</li>
+				<li>How Instantify work</li>
+			</ul>
+		</nav>
+
 	</header>

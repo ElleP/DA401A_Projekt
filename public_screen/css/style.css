@@ -26,7 +26,7 @@ header img{
 	margin:12% 0% !important;
 	border:1px solid #ddd;
 	box-shadow: 1px 1px 1px 0px rgba(150,150,150,.5);
-	padding:2%;
+	padding:0%;
 	text-align: center;
 	margin:auto;
 	clear: both;
@@ -35,8 +35,24 @@ header img{
 
 .box h2{
 	color:#444;
-	margin:5% 0 10% 0;
+	margin:0% 0 10% 0;
 	text-align: center;
+}
+
+.box .header-question{
+	padding:2% 0 0 0 ;
+	background-color: #ccc;
+	margin:0;
+	display: block;
+    height: 80px;
+    top: 0;
+    width: 100%;
+    margin-bottom: 0%;
+
+}
+
+.box .body-question{
+
 }
 
 .box form input[type=text]{
@@ -48,10 +64,11 @@ header img{
 	width:90%;
 	height:40px;
 	padding: 0 0 0 2%;
+	margin-top: 0%;
 }
 
 .box form input[type=text]:first-child{
-	margin: -4% 0 5% 0;
+	margin: 5% 0 5% 0;
 }
 
 .box form input[type=button]{
@@ -67,6 +84,7 @@ header img{
 	border:none;
 	float:right;
 }
+
 
 ::-webkit-input-placeholder {
 	transition: opacity ease 1s;
@@ -85,8 +103,13 @@ input:focus, select:focus, textarea:focus, button:focus {
     outline: none;
 }
 
-input:focus::-webkit-input-placeholder, input:focus::-moz-placeholder, input:focus::-ms-input-placeholder {
+input:focus::-webkit-input-placeholder {
     opacity: 0;
+}
+
+header li{
+	display: inline;
+	color:#fff;
 }
 
 
