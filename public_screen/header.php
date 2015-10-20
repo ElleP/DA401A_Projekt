@@ -15,6 +15,7 @@
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
     <script src="https://cdn.firebase.com/libs/angularfire/1.1.3/angularfire.min.js"></script>
     <script src="js/app.js"></script>
+    <script src="js/ui-labels.js"></script>
     
 
     <!--Firebase-->

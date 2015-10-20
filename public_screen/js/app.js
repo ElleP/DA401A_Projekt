@@ -1,15 +1,7 @@
 (function(){
-var app = angular.module('app', ['firebase']);
+var app = angular.module('app', ['firebase', 'labelController']);
+
 var tempQuestionList = [];
-    
-    app.controller('MessageController', function($scope){
-        //MessageController responsible for labels and stuff on webpage
-        $scope.msgID='Course ID';
-        $scope.msgCreate='Create question';
-        $scope.btnSubmit='Start';
-        $scope.btnSave='Save';
-        $scope.msgInput='Type question here';
-    });
     
     app.controller('FirebaseController', function($scope){
         //FirebaseController responsible for sending data to Firebase

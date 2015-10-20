@@ -1,0 +1,16 @@
+<div class="box">
+	<div class="header-question">
+		<h2>{{Ctrl.msgCreate}}</h2>
+	</div>
+	<div class="body-question">
+		<form>
+			<input ng-model="courseID" id="courseID" type="text" placeholder={{Ctrl.msgID}}></input>
+			<input ng-model="question" id="question" type="text" placeholder={{Ctrl.msgInput}}></input>
+			<input type="button" ng-click="submitData(courseID, question)" value={{Ctrl.btnSubmit}}></input>
+			<input ng-controller="SaveController" type="button" class="hide-element" ng-click="saveData(courseID, question)" 
+			value={{Ctrl.btnSave}}></input>
+		</form>
+	</div>
+	<div class="view-question">
+	</div>
+</div><!--End of .box-->
