@@ -32,31 +32,37 @@ var tempQuestionList = [];
         tempQuestionList.push($('#question').val());*/
 
         $scope.saveData = function(courseID, question){
-            tempID = courseID
+            $scope.tempID = courseID;
             tempQuestionList.push(question);
         };
+
+
  
         $(function(){
-            $('.hide-element').on("click",function(){
-                $('#courseID').css({
-                    'display':'none'
-                });
+            $('.hide-element').on("click", function(){
+                console.log(courseID, question);
 
-                $('.body-question').css({
-                    'display':'none'
-                });
+                //Måste remova redan appendade childs innan childs appendas eftersom det blir dubbelt upp
 
-                $('.view-question').append('<h2 class="header-question">View questions</h2>');
-                $('.box').append('<div class="body-question"></div>');
+                $('.body-view-question p').remove();
 
-                $('.body-question').append('<p>' + tempID + '</p>');
+
+                $('.body-view-question').append('<p class="added">Questions to add to course with id: ' + $scope.tempID + '</p>');
                 for (var i = 0; i < tempQuestionList.length; i++) {
-                    $('.body-question').append('<p>' + tempQuestionList[i] + '</p>');
+                    $('.body-view-question').append('<p class="added">' + tempQuestionList[i] + '</p>');
                 };
+
+                $('#courseID').val('');
+                $('#question').val('');
                 
-                console.log('hej');
+            });
 
-
+            $('.header-question').on("click", function(){
+                $('.body-question').toggle();
+                
+                    //$('.body-question').css({'height':'200px'})
+        
+                
             });
         });
     }) 

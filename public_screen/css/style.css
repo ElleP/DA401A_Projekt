@@ -5,7 +5,11 @@
 * {
 	margin:0;
 	padding:0;
-	
+	-webkit-font-smoothing: antialiased;
+}
+
+.col-md-6, .col-md-5{
+	padding:0 !important;
 }
 
 header{
@@ -18,47 +22,77 @@ header img{
 	width:230px;
 }
 
+nav{
+	float:right;
+}
+
 /* Styling for .box and elements in .box surrounding form */
-.box{
-	font-family: 'Open Sans', sans-serif;
-	font-weight: 400;
-	position: relative;
-	margin:12% 0% !important;
+.box-add, .box-view{
+	font-family: 'Muli', sans-serif;
+	font-weight: 300;
+	margin:2% 2% !important;
 	border:1px solid #ddd;
 	box-shadow: 1px 1px 1px 0px rgba(150,150,150,.5);
 	padding:0%;
 	text-align: center;
 	margin:auto;
-	clear: both;
-    overflow: hidden;
 }
 
-.box h2{
-	color:#444;
-	margin:0% 0 10% 0;
+.box-add h2, .box-view h2{
+	font-size: 1.3em;
 	text-align: center;
 }
 
-.box .header-question{
-	padding:2% 0 0 0 ;
-	background-color: #ccc;
+h3{
+	font-size: .95em;
+	font-style: italic;
+}
+
+.box-view{
+	min-height: 500px;
+}
+
+.box-add .header-question, .header-view-question{
+	padding:.5% 0 0 0 ;
+	background-color: #222;
 	margin:0;
 	display: block;
-    height: 80px;
+    height: 60px;
     top: 0;
     width: 100%;
     margin-bottom: 0%;
-
+    position: relative;
+    color:#fff;
 }
 
-.box .body-question{
-
+.box-add .body-question{
+	height:280px;
 }
 
-.box form input[type=text]{
-	font-size: 1.35em;
-	font-family: 'Open Sans', sans-serif;
-	font-weight: 300;
+
+.box-view .body-view-question{
+	min-height: 500px;
+	padding:2%;
+	text-align: left;
+}
+
+.box .body-view-question p:first-child{
+	font-size: 1.6em;
+	text-align: left;
+	padding: 2% 0 4% 0;
+}
+
+.box form{
+	margin-top:6%;
+}
+
+#question{
+	margin-top:2% !important;
+}
+
+.box-add form input[type=text]{
+	font-size: 1.15em;
+	font-family: 'Muli', sans-serif;
 	border:none;
 	border-bottom:1px solid #ccc;
 	width:90%;
@@ -67,20 +101,20 @@ header img{
 	margin-top: 0%;
 }
 
-.box form input[type=text]:first-child{
+.box-add form input[type=text]:first-child{
 	margin: 5% 0 5% 0;
 }
 
-.box form input[type=button]{
-	font-family: 'Open Sans', sans-serif;
+.box-add form input[type=button]{
+	font-family: 'Muli', sans-serif;
 	font-weight: 300;
 	margin:10% 5% 5% 0%;
 	display:block;
 	width:35%;
-	height:45px;
+	height:35px;
 	box-shadow: 2px 2px 5px 0px rgba(50,50,50,.5);
 	background-color:#ddd;
-	font-size: 1.3em;
+	font-size: 1.15em;
 	border:none;
 	float:right;
 }
@@ -107,9 +141,18 @@ input:focus::-webkit-input-placeholder {
     opacity: 0;
 }
 
-header li{
+
+nav{
+	font-weight: 200;
+	font-family: 'Muli';
+	width:400px;
+	margin:5% 0 0 0;
+}
+nav li{
+
 	display: inline;
 	color:#fff;
+	margin:5% 5% 0 0;
 }
 
 
