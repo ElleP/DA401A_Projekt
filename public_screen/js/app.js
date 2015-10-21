@@ -3,24 +3,53 @@ var app = angular.module('app', ['firebase']);
 
 var tempQuestionList = [];
 var tempID = "";
+var index = 0;
     
     app.controller('FirebaseController', function($scope){
         //FirebaseController responsible for sending data to Firebase
         $scope.submitData = function(courseID, question){
 
-            var ref = new Firebase("https://instantify.firebaseio.com");
+            var ref = new Firebase("https://instantify.firebaseio.com/");
             
-            var dataTable = ref.child(courseID);
-            
-            dataTable.set({
-            active_questions: question,
-            answers: {'testkey' : 'testvalue'},
-            history: {'testkey' : 'testvalue'},
-            question_queue: {"testkey" : question}
-            });
+            if(ref.hasChild(courseID)){
+                var question_list = ref.child(courseID).child("question_queue");
+                index++;
+                var tempString = 'question_id_' + index.toString();
+                var newQuestion = question_list.push({tempString : question});
+            }
+            else{
+
+                        dataTable.set({
+                            active_questions: question,
+                            answers: {'testkey' : 'XX'},
+                            history: {'testkey' : 'XX'},
+                            question_queue: {'testkey' : question}
+                        });
+
+            }
             
             console.log(question, courseID);    
         }
+
+        $scope.sendAll = function(){
+
+            var ref = new Firebase("https://instantify.firebaseio.com");
+        };
+
+        $scope.getListData = function(courseID){
+
+            alert("heoo");
+
+          var ref = new Firebase("https://instantify.firebaseio.com");
+
+          // download the data into a local object
+          var questions = ref.child(courseID).child("question_queue");
+          var activeQuestion = ref.child(courseID).child("active_question");
+
+          console.log(questions);
+
+        };
+
     });   
 
     app.controller('MessageController', function($scope){
@@ -30,6 +59,7 @@ var tempID = "";
         this.btnSave='Save';
         this.msgInput='Type question here';
     })
+
 
     app.controller('SaveController', function($scope){
         

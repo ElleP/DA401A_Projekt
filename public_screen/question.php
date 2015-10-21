@@ -17,7 +17,7 @@
 									<input ng-model="courseID" id="courseID" type="text" placeholder={{Ctrl.msgID}}></input>
 									<input ng-model="question" id="question" type="text" placeholder={{Ctrl.msgInput}}></input>
 									<input type="button" ng-click="submitData(courseID, question)" value={{Ctrl.btnSubmit}}></input>
-									<input ng-controller="SaveController" type="button" class="hide-element" ng-click="saveData(courseID, question)" value={{Ctrl.btnSave}}></input>
+									<input ng-controller="SaveController" type="button" class="hide-element" ng-click="saveData(courseID, question);getListData(courseID)" value={{Ctrl.btnSave}}></input>
 								</form>
 							</div><!--End of .body-queestion-->
 						</div><!--End of .box-add-->
@@ -28,7 +28,9 @@
 								</div>
 								<div class="body-view-question">
 									<h3>Please enter courseID to get saved questions</h3>
+									<input type="button" value="Send to Firebase" ng-click="sendAll()"></input>
 								</div>
+
 							</div>
 						</div> <!--end of .box-view-->
 					</div><!--End of .row-->
