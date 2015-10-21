@@ -36,7 +36,7 @@ index = 0;
     app.controller('SaveController', function($scope){        
         $scope.saveData = function(courseID, question){
             tempID = courseID;
-            tempQuestionList.push(question);
+            //tempQuestionList.push(question);
 
             var ref = new Firebase("https://instantify.firebaseio.com/");
 
@@ -66,6 +66,7 @@ index = 0;
         }   
 
         $scope.getListData = function(courseID){
+            $('.body-view-question p').remove();
             alert('körs');
             var ref = new Firebase("https://instantify.firebaseio.com/" + courseID);
 
@@ -73,9 +74,12 @@ index = 0;
             //var questions = ref.child(courseID).child("question_queue");
             //var activeQuestion = ref.child(courseID).child("active_question");
 
-            ref.once("value", function(snapshot) {
-              var nameSnapshot = snapshot.child("question_queue");
-              var name = nameSnapshot.val();
+            ref.orderByKey().once("value", function(snapshot) {
+              var qSnapshot = snapshot.child("question_queue");
+              qSnapshot.forEach(function(data) {
+                $('.body-view-question').append('<p class="added">' +  data.val() + '</p>');
+                });
+              
           });
               // name === { first: "Fred", last: "Flintstone"}
               //var firstNameSnapshot = snapshot.child("name/first");
@@ -91,13 +95,13 @@ index = 0;
 
                 //Måste remova redan appendade childs innan childs appendas eftersom det blir dubbelt upp
 
-                $('.body-view-question p').remove();
+                /*$('.body-view-question p').remove();*/
 
 
-                $('.body-view-question').append('<p class="added">Questions to add to course with id: ' + tempID + '</p>');
+                /*$('.body-view-question').append('<p class="added">Questions to add to course with id: ' + tempID + '</p>');
                 for (var i = 0; i < tempQuestionList.length; i++) {
                     $('.body-view-question').append('<p class="added">' + tempQuestionList[i] + '</p>');
-                };
+                };*/
 
                 $('#courseID').val('');
                 $('#question').val('');
@@ -126,7 +130,7 @@ index = 0;
                 
             });
 
-            $('h.hide-element').off('click');
+            $('.hide-element').off('click');
         });
 
     }) 
