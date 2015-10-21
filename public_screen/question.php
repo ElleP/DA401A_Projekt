@@ -27,8 +27,8 @@
 									<h2>View saved questions</h2>
 								</div>
 								<div class="body-view-question">
-									<h3>Please enter courseID to get saved questions</h3>
-									<input type="button" value="Send to Firebase" ng-click="sendAll()"></input>
+									<!--<h3>Please enter courseID to get saved questions</h3>
+									<input type="button" value="Send to Firebase" ng-click="sendAll()"></input>-->
 								</div>
 
 							</div>

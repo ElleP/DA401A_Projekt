@@ -3,52 +3,24 @@ var app = angular.module('app', ['firebase']);
 
 var tempQuestionList = [];
 var tempID = "";
-var index = 0;
-    
+index = 0;    
     app.controller('FirebaseController', function($scope){
         //FirebaseController responsible for sending data to Firebase
+
         $scope.submitData = function(courseID, question){
 
-            var ref = new Firebase("https://instantify.firebaseio.com/");
-            
-            if(ref.hasChild(courseID)){
-                var question_list = ref.child(courseID).child("question_queue");
-                index++;
-                var tempString = 'question_id_' + index.toString();
-                var newQuestion = question_list.push({tempString : question});
-            }
-            else{
-
-                        dataTable.set({
-                            active_questions: question,
-                            answers: {'testkey' : 'XX'},
-                            history: {'testkey' : 'XX'},
-                            question_queue: {'testkey' : question}
-                        });
-
-            }
-            
-            console.log(question, courseID);    
-        }
-
-        $scope.sendAll = function(){
-
             var ref = new Firebase("https://instantify.firebaseio.com");
-        };
-
-        $scope.getListData = function(courseID){
-
-            alert("heoo");
-
-          var ref = new Firebase("https://instantify.firebaseio.com");
-
-          // download the data into a local object
-          var questions = ref.child(courseID).child("question_queue");
-          var activeQuestion = ref.child(courseID).child("active_question");
-
-          console.log(questions);
-
-        };
+            
+            var dataTable = ref.child(courseID);
+            
+            dataTable.set({
+            active_questions: question,
+            answers: {'testkey' : 'testvalue'},
+            history: {'testkey' : 'testvalue'},
+            question_queue: {"testkey" : question}
+            });
+            
+        }
 
     });   
 
@@ -61,26 +33,61 @@ var index = 0;
     })
 
 
-    app.controller('SaveController', function($scope){
-        
-        /*alert($('#courseID').val());
-        alert($('#question').val());
-        if ( $('#courseID').val() != ""){
-            tempQuestionList.push($('#courseID').val());
-        }
-        tempQuestionList.push($('#question').val());*/
-
+    app.controller('SaveController', function($scope){        
         $scope.saveData = function(courseID, question){
-
             tempID = courseID;
             tempQuestionList.push(question);
+
+            var ref = new Firebase("https://instantify.firebaseio.com/");
+
+            ref.once("value", function(snapshot) {
+            var isChild = snapshot.hasChild(courseID);
+            var index = snapshot.child(courseID).child("question_queue").numChildren();
+                if(isChild){
+                    var question_list = ref.child(courseID).child("question_queue");
+                    index++;
+                    var tempString = 'question_id_' + index.toString();
+                    var testQuery = {};
+                    testQuery[tempString] = question;
+                    question_list.update(testQuery);
+                }
+                else{
+                    var dataTable = ref.child(courseID);
+                    dataTable.set({
+                        active_questions: question,
+                        answers: {'testkey' : 'XX'},
+                        history: {'testkey' : 'XX'},
+                        question_queue: {'question_id_1' : question}
+                    });
+
+                }
+                
+            })
+        }   
+
+        $scope.getListData = function(courseID){
+            alert('körs');
+            var ref = new Firebase("https://instantify.firebaseio.com/" + courseID);
+
+              // download the data into a local object
+            //var questions = ref.child(courseID).child("question_queue");
+            //var activeQuestion = ref.child(courseID).child("active_question");
+
+            ref.once("value", function(snapshot) {
+              var nameSnapshot = snapshot.child("question_queue");
+              var name = nameSnapshot.val();
+          });
+              // name === { first: "Fred", last: "Flintstone"}
+              //var firstNameSnapshot = snapshot.child("name/first");
+              //var firstName = firstNameSnapshot.val();
+              // firstName === "Fred"
         };
+        
 
 
  
         $(function(){
             $('.hide-element').on("click", function(){
-                console.log(courseID, question, tempID);
 
                 //Måste remova redan appendade childs innan childs appendas eftersom det blir dubbelt upp
 
