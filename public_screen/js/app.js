@@ -87,7 +87,7 @@ index = 0;
 
  
         $(function(){
-            $('.hide-element').on("click", function(){
+            $('.save-element').on("click", function(){
 
                 //Måste remova redan appendade childs innan childs appendas eftersom det blir dubbelt upp
 
@@ -101,14 +101,28 @@ index = 0;
 
                 $('#courseID').val('');
                 $('#question').val('');
+
+
+                //Byter ut input fält till paragraf med kursID
+                $('#courseID').css({'display':'none'});
+                $('#current-courseID').css({
+                    'display':'block'
+                }).text('CourseID: ' + tempID);
+                $('#change-courseID').css({'display':'block'});
                 
             });
 
-            $('.header-question').on("click", function(){
-                $('.body-question').toggle();
-                
-                    //$('.body-question').css({'height':'200px'})
-        
+            $('#change-courseID').on('click', function(){
+                $('#courseID').css({'display':'block', 'margin-left':'6%'});
+                $('#current-courseID').css({
+                    'display':'none'
+                }).text('CourseID: ' + tempID);
+                $('#change-courseID').css({'display':'none'});
+            })
+
+            //Hides the body to view question when clicked
+            $('.header-view-question').on("click", function(){
+                $('.body-view-question').toggle();
                 
             });
 

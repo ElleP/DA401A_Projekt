@@ -97,12 +97,12 @@ h3{
 	border-bottom:1px solid #ccc;
 	width:90%;
 	height:40px;
-	padding: 0 0 0 2%;
+	padding: 0 0 0 0%;
 	margin-top: 0%;
 }
 
 .box-add form input[type=text]:first-child{
-	margin: 5% 0 5% 0;
+	margin: 5% 0 5% 0%;
 }
 
 .box-add form input[type=button]{
@@ -141,18 +141,21 @@ input:focus::-webkit-input-placeholder {
     opacity: 0;
 }
 
-
-nav{
-	font-weight: 200;
-	font-family: 'Muli';
-	width:400px;
-	margin:5% 0 0 0;
+#current-courseID{
+	display:none;
+	float:left;
+	width:59%;
+	text-align: left;
+	margin:5% 0 6.5% 6%;
+	font-size: 1.25em;
+	font-weight: 400;
 }
-nav li{
-
-	display: inline;
-	color:#fff;
-	margin:5% 5% 0 0;
+#change-courseID{
+	display:none;
+	float:left;
+	width:30%;
+	margin:5% 5% 6.5% 0;
+	height:30px;
 }
 
 

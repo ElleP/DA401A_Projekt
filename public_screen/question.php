@@ -13,11 +13,13 @@
 								<h2>{{Ctrl.msgCreate}}</h2>
 							</div>
 							<div class="body-question">
+								<p id="current-courseID"></p>
+                				<button id="change-courseID">Change courseID</button>
 								<form>
 									<input ng-model="courseID" id="courseID" type="text" placeholder={{Ctrl.msgID}}></input>
 									<input ng-model="question" id="question" type="text" placeholder={{Ctrl.msgInput}}></input>
 									<input type="button" ng-click="submitData(courseID, question)" value={{Ctrl.btnSubmit}}></input>
-									<input ng-controller="SaveController" type="button" class="hide-element" ng-click="saveData(courseID, question);getListData(courseID)" value={{Ctrl.btnSave}}></input>
+									<input ng-controller="SaveController" type="button" class="save-element" ng-click="saveData(courseID, question);getListData(courseID)" value={{Ctrl.btnSave}}></input>
 								</form>
 							</div><!--End of .body-queestion-->
 						</div><!--End of .box-add-->
