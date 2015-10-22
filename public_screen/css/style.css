@@ -39,7 +39,8 @@ nav{
 }
 
 .box-add h2, .box-view h2{
-	font-size: 1.3em;
+	margin: 2.5%;
+	font-size: 1.2em;
 	text-align: center;
 }
 
@@ -57,7 +58,7 @@ h3{
 	background-color: #222;
 	margin:0;
 	display: block;
-    height: 60px;
+    height: 50px;
     top: 0;
     width: 100%;
     margin-bottom: 0%;
@@ -66,7 +67,7 @@ h3{
 }
 
 .box-add .body-question{
-	height:280px;
+	height:220px;
 }
 
 
@@ -110,7 +111,7 @@ h3{
 	font-weight: 300;
 	margin:7% 5% 3% 0%;
 	display:block;
-	width:35%;
+	width:30%;
 	height:35px;
 	box-shadow: 2px 2px 5px 0px rgba(50,50,50,.5);
 	background-color:#ddd;
