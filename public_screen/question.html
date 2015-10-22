@@ -48,13 +48,13 @@
 								</form>
 							</div><!--End of .body-queestion-->
 						</div><!--End of .box-add-->
-						<div class="col-md-6 col-md-offset-2 box-view" ng-controller="SampleCtrl as Ctrl">
+						<div class="col-md-6 col-md-offset-2 box-view" >
 							<div class="view-question" >
 								<div class="header-view-question">
 									<h2>View saved questions</h2>
 								</div>
 								<div class="body-view-question">
-									<ul>
+									<ul ng-controller="SampleCtrl">
 										<li ng-repeat="message in messages">{{ message.$value }}</li>
 									</ul>
 									<!--<h3>Please enter courseID to get saved questions</h3>
