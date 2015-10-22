@@ -17,7 +17,7 @@ index = 0;
             active_questions: question,
             answers: {'testkey' : 'testvalue'},
             history: {'testkey' : 'testvalue'},
-            question_queue: {"testkey" : question}
+            question_queue: {"question_id_1" : question}
             });
             
         }
@@ -47,9 +47,9 @@ index = 0;
                     var question_list = ref.child(courseID).child("question_queue");
                     index++;
                     var tempString = 'question_id_' + index.toString();
-                    var testQuery = {};
-                    testQuery[tempString] = question;
-                    question_list.update(testQuery);
+                    var tempQuery = {};
+                    tempQuery[tempString] = question;
+                    question_list.update(tempQuery);
                 }
                 else{
                     var dataTable = ref.child(courseID);
