@@ -44,13 +44,8 @@ index = 0;
     app.controller("SampleCtrl", function($scope, $firebaseArray) {
         var id = "M_001";
         var ref = new Firebase("https://instantify.firebaseio.com/" + id +"/question_queue");
-        
-      // create a synchronized array
-      // click on `index.html` above to see it used in the DOM!
-
-            
         $scope.messages = $firebaseArray(ref); 
-        
+
     });
 
     app.controller('MessageController', function($scope){
@@ -96,37 +91,22 @@ index = 0;
         }
 
         $scope.getListData = function(courseID){
-            $('.body-view-question p').remove();
-            $('.body-view-question button').remove();
+            $('.body-view-question li').remove();
             var ref = new Firebase("https://instantify.firebaseio.com/" + courseID + "/question_queue");
-
-              // download the data into a local object
-            //var questions = ref.child(courseID).child("question_queue");
-            //var activeQuestion = ref.child(courseID).child("active_question");
-
-            ref.orderByKey().on("value", function(snapshot) {
-              snapshot.forEach(function(data) {
-                alert(data.val());
-                $('.body-view-question').append('<p class="added">' +  data.val() + '</p><button class="activate" data-value="false">Activate</button><button class="delete">Delete</button><hr>');
-                });
+            ref.off("child_added");
+            var callback = ref.on('child_added', function(snapshot) {
+                $('.body-view-question').append('<li class="added">' +  snapshot.val() + '<button class="activate" data-value="false">Activate</button><button class="delete">Delete</button><hr></li>');
+  
             });
         };
+
+        
         
 
 
  
         $(function(){
             $('.save-element').on("click", function(){
-
-                //Måste remova redan appendade childs innan childs appendas eftersom det blir dubbelt upp
-
-                /*$('.body-view-question p').remove();*/
-
-
-                /*$('.body-view-question').append('<p class="added">Questions to add to course with id: ' + tempID + '</p>');
-                for (var i = 0; i < tempQuestionList.length; i++) {
-                    $('.body-view-question').append('<p class="added">' + tempQuestionList[i] + '</p>');
-                };*/
 
                 $('#courseID').val('');
                 $('#question').val('');

@@ -44,7 +44,7 @@
 									<input ng-model="courseID" id="courseID" type="text" placeholder={{Ctrl.msgID}}></input>
 									<input ng-model="question" id="question" type="text" placeholder={{Ctrl.msgInput}}></input>
 									<input type="button" ng-click="submitData(courseID, question)" value={{Ctrl.btnSubmit}}></input>
-									<input ng-controller="SaveController" type="button" class="save-element" ng-click="saveData(courseID, question);" value={{Ctrl.btnSave}}></input>
+									<input ng-controller="SaveController" type="button" class="save-element" ng-click="saveData(courseID, question);getListData(courseID);$event.stopPropagnation;" value={{Ctrl.btnSave}}></input>
 								</form>
 							</div><!--End of .body-queestion-->
 						</div><!--End of .box-add-->
@@ -54,11 +54,9 @@
 									<h2>View saved questions</h2>
 								</div>
 								<div class="body-view-question">
-									<ul ng-controller="SampleCtrl">
+									<!--<ul ng-controller="SampleCtrl">
 										<li ng-repeat="message in messages">{{ message.$value }}</li>
-									</ul>
-									<!--<h3>Please enter courseID to get saved questions</h3>
-									<input type="button" value="Send to Firebase" ng-click="sendAll()"></input>-->
+									</ul>-->
 								</div>
 
 							</div>
