@@ -119,6 +119,26 @@ h3{
 	float:right;
 }
 
+.body-view-question li{
+	list-style-type: none;
+
+}
+
+.body-view-question{
+	padding:30% 0;
+	width:90%;
+	margin:auto;
+}
+
+.body-view-question li:first-child{
+	margin-top:5%;
+}
+
+.body-view-question li .fa-trash-o, .fa-square-o {
+	float:right;
+	margin: 0 0% 0 4%;
+}
+
 
 ::-webkit-input-placeholder {
 	transition: opacity ease 1s;
@@ -157,6 +177,7 @@ input:focus::-webkit-input-placeholder {
 	margin:5% 5% 6.5% 0;
 	height:30px;
 }
+
 
 
 

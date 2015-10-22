@@ -95,8 +95,7 @@ index = 0;
             var ref = new Firebase("https://instantify.firebaseio.com/" + courseID + "/question_queue");
             ref.off("child_added");
             var callback = ref.on('child_added', function(snapshot) {
-                $('.body-view-question').append('<li class="added">' +  snapshot.val() + '<button class="activate" data-value="false">Activate</button><button class="delete">Delete</button><hr></li>');
-  
+                $('.body-view-question').append('<li class="added">' +  snapshot.val() + '<i class="fa fa-trash-o"></i><i class="fa fa-square-o"></i><hr></li>');
             });
         };
 
