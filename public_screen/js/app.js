@@ -100,10 +100,6 @@ index = 0;
         };
 
         
-        
-
-
- 
         $(function(){
             $('.save-element').on("click", function(){
 
