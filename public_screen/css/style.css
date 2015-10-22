@@ -28,9 +28,10 @@ nav{
 
 /* Styling for .box and elements in .box surrounding form */
 .box-add, .box-view{
-	font-family: 'Muli', sans-serif;
-	font-weight: 300;
-	margin:2% 2% !important;
+	width: 49% !important;
+    font-family: 'Muli', sans-serif;
+    font-weight: 300;
+    margin: 2% .5% !important;
 	border:1px solid #ddd;
 	box-shadow: 1px 1px 1px 0px rgba(150,150,150,.5);
 	padding:0%;
@@ -135,7 +136,7 @@ h3{
 	margin-top:5%;
 }
 
-.body-view-question li .fa-trash-o, .fa-square-o {
+.body-view-question li .fa-trash-o, .fa-square-o, .fa-check-square-o{
 	float:right;
 	margin: 0 0% 0 4%;
 }

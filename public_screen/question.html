@@ -31,11 +31,11 @@
 	<header>
 		<img src="img/instantify.png" alt="Logo">
 	</header>
-		<div ng-controller="FirebaseController" class="container-fluid">
+		<div ng-controller="FirebaseController" class="container">
 			<div id="row">
 				<div class="col-md-12" >
 					<div ng-controller="MessageController as Ctrl" class="row">
-						<div class="col-md-5 box-add">
+						<div class="col-md-6 box-add">
 							<div class="header-question">
 								<h2>{{Ctrl.msgCreate}}</h2>
 							</div>
@@ -54,7 +54,7 @@
 								</form>
 							</div><!--End of .body-queestion-->
 						</div><!--End of .box-add-->
-						<div class="col-md-6 col-md-offset-2 box-view" >
+						<div class="col-md-6 box-view" >
 							<div class="view-question" >
 								<div class="header-view-question">
 									<h2>Your saved questions</h2>
