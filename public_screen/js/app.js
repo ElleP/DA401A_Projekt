@@ -10,16 +10,32 @@ index = 0;
         $scope.submitData = function(courseID, question){
 
             var ref = new Firebase("https://instantify.firebaseio.com");
-            
-            var dataTable = ref.child(courseID);
-            
-            dataTable.set({
-            active_questions: question,
-            answers: {'testkey' : 'testvalue'},
-            history: {'testkey' : 'testvalue'},
-            question_queue: {"question_id_1" : question}
+            ref.once("value", function(snapshot) {
+                var isChild = snapshot.hasChild(courseID);
+                var index = snapshot.child(courseID).child("question_queue").numChildren();
+
+                if (isChild){
+                    var active_question = ref.child(courseID);
+                    var question_queue_item = ref.child(courseID).child("question_queue");
+                    index++;
+                    var tempString = 'question_id_' + index.toString();
+                    var tempQuery = {};
+                    tempQuery[tempString] = question;
+                    question_queue_item.update(tempQuery);
+                    active_question.update({"active_questions" : question});
+                    
+                }
+                else{
+                var dataTable = ref.child(courseID);
+                
+                dataTable.set({
+                    active_questions: question,
+                    answers: {'testkey' : 'testvalue'},
+                    history: {'testkey' : 'testvalue'},
+                    question_queue: {"question_id_1" : question}
+                    });
+                }
             });
-            
         }
 
     });   
