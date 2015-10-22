@@ -23,7 +23,6 @@ index = 0;
                     tempQuery[tempString] = question;
                     question_queue_item.update(tempQuery);
                     active_question.update({"active_questions" : question});
-                    
                 }
                 else{
                 var dataTable = ref.child(courseID);
@@ -40,6 +39,20 @@ index = 0;
 
     });   
 
+        
+
+    app.controller("SampleCtrl", function($scope, $firebaseArray) {
+        var id = "M_001";
+        var ref = new Firebase("https://instantify.firebaseio.com/" + id +"/question_queue");
+        
+      // create a synchronized array
+      // click on `index.html` above to see it used in the DOM!
+
+            
+        $scope.messages = $firebaseArray(ref); 
+        
+    });
+
     app.controller('MessageController', function($scope){
         this.msgID='Course ID';
         this.msgCreate='Create question';
@@ -49,7 +62,7 @@ index = 0;
     })
 
 
-    app.controller('SaveController', function($scope){        
+    app.controller('SaveController', function($scope, $firebaseArray){        
         $scope.saveData = function(courseID, question){
             tempID = courseID;
             //tempQuestionList.push(question);
@@ -77,30 +90,26 @@ index = 0;
                     });
 
                 }
-                
-            })
-        }   
+
+           })
+            
+        }
 
         $scope.getListData = function(courseID){
             $('.body-view-question p').remove();
-            alert('körs');
-            var ref = new Firebase("https://instantify.firebaseio.com/" + courseID);
+            $('.body-view-question button').remove();
+            var ref = new Firebase("https://instantify.firebaseio.com/" + courseID + "/question_queue");
 
               // download the data into a local object
             //var questions = ref.child(courseID).child("question_queue");
             //var activeQuestion = ref.child(courseID).child("active_question");
 
-            ref.orderByKey().once("value", function(snapshot) {
-              var qSnapshot = snapshot.child("question_queue");
-              qSnapshot.forEach(function(data) {
-                $('.body-view-question').append('<p class="added">' +  data.val() + '</p>');
+            ref.orderByKey().on("value", function(snapshot) {
+              snapshot.forEach(function(data) {
+                alert(data.val());
+                $('.body-view-question').append('<p class="added">' +  data.val() + '</p><button class="activate" data-value="false">Activate</button><button class="delete">Delete</button><hr>');
                 });
-              
-          });
-              // name === { first: "Fred", last: "Flintstone"}
-              //var firstNameSnapshot = snapshot.child("name/first");
-              //var firstName = firstNameSnapshot.val();
-              // firstName === "Fred"
+            });
         };
         
 
@@ -138,6 +147,8 @@ index = 0;
                     'display':'none'
                 }).text('CourseID: ' + tempID);
                 $('#change-courseID').css({'display':'none'});
+                $('.body-view-question p').remove();
+                $('.body-view-question button').remove();
             })
 
             //Hides the body to view question when clicked
