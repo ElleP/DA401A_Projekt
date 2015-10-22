@@ -92,18 +92,19 @@ index = 0;
 
         $scope.getListData = function(courseID){
             $('.body-view-question li').remove();
-            var active_question;
+            var active_question = "";
             var active = new Firebase("https://instantify.firebaseio.com/" + courseID).child('active_questions');
+            active_question = active;
             var ref = new Firebase("https://instantify.firebaseio.com/" + courseID + "/question_queue");
-            ref.off("child_added");
             active.off('value');
+            ref.off("child_added");
+            
             active.on("value", function(data) {
                 active_question = data.val();
 
                     ref.on('child_added', function(snapshot) {
 
                         if(snapshot.val() == active_question){
-
                             $('.body-view-question').append('<li class="added">' +  active_question + '<i class="fa fa-trash-o"></i><i class="fa fa-check-square-o"></i><hr></li>');
                         }
                         else{
@@ -111,7 +112,7 @@ index = 0;
                         }
                     });
             });
-            console.log(active_question);
+            console.log(active_question[1]);
 
             
             
