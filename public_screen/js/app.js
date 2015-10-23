@@ -42,15 +42,8 @@ index = 0;
         
 
     app.controller("SampleCtrl", function($scope, $firebaseArray) {
-
-
-
         var ref = new Firebase("https://instantify.firebaseio.com/" + tempID +"/question_queue");
         $scope.messages = $firebaseArray(ref); 
-    
-
-        
-
     });
 
     app.controller('MessageController', function($scope){
@@ -100,14 +93,15 @@ index = 0;
             var active = new Firebase("https://instantify.firebaseio.com/" + courseID).child('active_questions');
             var ref = new Firebase("https://instantify.firebaseio.com/" + courseID + "/question_queue");
             ref.off('child_added'); 
+            active.off('value')
             ref.on('child_added', function(snapshot) {
                 active.on("value", function(data) {
                 active_question = data.val();
                 if(snapshot.val() == active_question){
-                    $('.active-question').append('<li class="added" ng-click="removeActive()">' +  active_question + '<i class="fa fa-trash-o"></i><i class="fa fa-check-square-o"></i><hr></li>');
+                    $('.questions').append('<li class="added" id="active">' +  active_question + '<i class="fa fa-trash-o"></i><i class="fa fa-check-square-o"></i><hr></li>');
                 }
                 else{
-                    $('.questions').append('<li class="added" ng-click="setActive()">' +  snapshot.val() + '<i class="fa fa-trash-o"></i><i class="fa fa-square-o"></i><hr></li>');
+                    $('.questions').append('<li class="question added" ng-click="setActive()">' +  snapshot.val() + '<i class="fa fa-trash-o"></i><i class="fa fa-square-o"></i><hr></li>');
                 }
             });
         });
@@ -131,6 +125,10 @@ index = 0;
             });
 
             $('#change-courseID').on('click', function(){
+                $('.body-view-question li').remove();
+            })
+
+            $('#change-courseID').on('click', function(){
                 $('#courseID').css({'display':'block', 'margin-left':'6%'});
                 $('#current-courseID').css({
                     'display':'none'
@@ -147,6 +145,18 @@ index = 0;
             });
 
             $('.hide-element').off('click');
+
+            $('.body-view-question').on('click', '.added', function(event){
+                event.stopImmediatePropagation();
+                if ($(this).hasClass('question')){
+                    $('.body-view-question li').remove();
+                    var ref = new Firebase("https://instantify.firebaseio.com/" + tempID);
+                    ref.update({'active_questions' : $(this).text()});
+  
+                }
+                //$('.body-view-question').off( "click", ".added");
+            })
+            
         });
 
     }) 
