@@ -122,8 +122,36 @@ h3{
 }
 
 .body-view-question li{
+	width:90%;
+	margin: 0;
 	list-style-type: none;
 
+}
+
+.fa{
+	margin-top: -3%;
+}
+/*)
+.fa-trash-o, .fa-square-o{
+	width:5%;
+		float:right;
+
+}*/
+
+
+.fa-trash-o {
+	padding: 1%;
+	float:right;
+    margin-left: 30%;
+}
+
+.icons{
+	float: left;
+    display: block;
+    width: 10%;
+    position: absolute;
+    right: 50px;
+    margin-top: -2.5%;
 }
 
 .body-view-question{

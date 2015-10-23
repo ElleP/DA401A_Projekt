@@ -90,6 +90,8 @@ index = 0;
 
         $scope.getListData = function(courseID){
             $('.body-view-question li').remove();
+            $('.body-view-question span').remove();
+            $('.body-view-question hr').remove();
             var active = new Firebase("https://instantify.firebaseio.com/" + courseID).child('active_questions');
             var ref = new Firebase("https://instantify.firebaseio.com/" + courseID + "/question_queue");
             ref.off('child_added'); 
@@ -98,10 +100,10 @@ index = 0;
                 active.on("value", function(data) {
                 active_question = data.val();
                 if(snapshot.val() == active_question){
-                    $('.questions').append('<li class="added" id="active">' +  active_question + '<i class="fa fa-trash-o"></i><i class="fa fa-check-square-o"></i><hr></li>');
+                    $('.questions').append('<li class="added" id="active">' +  active_question + '</li><span class="icons"><i class="fa fa-trash-o"></i><i class="fa fa-check-square-o"></i></span><hr>');
                 }
                 else{
-                    $('.questions').append('<li class="question added" ng-click="setActive()">' +  snapshot.val() + '<i class="fa fa-trash-o"></i><i class="fa fa-square-o"></i><hr></li>');
+                    $('.questions').append('<li class="question added">' +  snapshot.val() + '</li><span class="icons"><i class="fa fa-trash-o"></i><i class="fa fa-square-o"></i></span><hr>');
                 }
             });
         });
@@ -114,18 +116,19 @@ index = 0;
                 $('#courseID').val('');
                 $('#question').val('');
 
-
                 //Byter ut input fält till paragraf med kursID
                 $('#courseID').css({'display':'none'});
                 $('#current-courseID').css({
                     'display':'block'
-                }).text('CourseID: ' + tempID);
+                    }).text('CourseID: ' + tempID);
                 $('#change-courseID').css({'display':'block'});
                 
             });
 
             $('#change-courseID').on('click', function(){
                 $('.body-view-question li').remove();
+                $('.body-view-question span').remove();
+                $('.body-view-question hr').remove();
             })
 
             $('#change-courseID').on('click', function(){
@@ -146,15 +149,19 @@ index = 0;
 
             $('.hide-element').off('click');
 
-            $('.body-view-question').on('click', '.added', function(event){
+            $('.body-view-question').on('click', '.fa-square-o', function(event){
                 event.stopImmediatePropagation();
-                if ($(this).hasClass('question')){
+                
+
+                question = $(this).parent().prev().text();
+                if ($(this).parent().prev().hasClass('question')){
                     $('.body-view-question li').remove();
+                    $('.body-view-question span').remove();
+                    $('.body-view-question hr').remove();
                     var ref = new Firebase("https://instantify.firebaseio.com/" + tempID);
-                    ref.update({'active_questions' : $(this).text()});
-  
+                    ref.update({'active_questions' : question});
+                    
                 }
-                //$('.body-view-question').off( "click", ".added");
             })
             
         });
