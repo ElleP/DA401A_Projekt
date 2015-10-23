@@ -42,9 +42,14 @@ index = 0;
         
 
     app.controller("SampleCtrl", function($scope, $firebaseArray) {
-        var id = "M_001";
-        var ref = new Firebase("https://instantify.firebaseio.com/" + id +"/question_queue");
+
+
+
+        var ref = new Firebase("https://instantify.firebaseio.com/" + tempID +"/question_queue");
         $scope.messages = $firebaseArray(ref); 
+    
+
+        
 
     });
 
@@ -99,14 +104,14 @@ index = 0;
                 active.on("value", function(data) {
                 active_question = data.val();
                 if(snapshot.val() == active_question){
-                    $('.active-question').append('<li class="added">' +  active_question + '<i class="fa fa-trash-o"></i><i class="fa fa-check-square-o"></i><hr></li>');
+                    $('.active-question').append('<li class="added" ng-click="removeActive()">' +  active_question + '<i class="fa fa-trash-o"></i><i class="fa fa-check-square-o"></i><hr></li>');
                 }
                 else{
-                    $('.questions').append('<li class="added">' +  snapshot.val() + '<i class="fa fa-trash-o"></i><i class="fa fa-square-o"></i><hr></li>');
+                    $('.questions').append('<li class="added" ng-click="setActive()">' +  snapshot.val() + '<i class="fa fa-trash-o"></i><i class="fa fa-square-o"></i><hr></li>');
                 }
-                });
             });
-        };
+        });
+    };
 
         
         $(function(){
