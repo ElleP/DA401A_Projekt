@@ -31,7 +31,7 @@ nav{
 	width: 49% !important;
     font-family: 'Muli', sans-serif;
     font-weight: 300;
-    margin: 2% .5% !important;
+    margin: 4% .5% !important;
 	border:1px solid #ddd;
 	box-shadow: 1px 1px 1px 0px rgba(150,150,150,.5);
 	padding:0%;
@@ -73,7 +73,7 @@ h3{
 
 
 .box-view .body-view-question{
-	min-height: 500px;
+	min-height: 237px;
 	padding:2%;
 	text-align: left;
 }
