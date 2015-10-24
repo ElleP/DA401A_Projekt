@@ -3,6 +3,7 @@ var app = angular.module('app', ['firebase']);
 
 var tempQuestionList = [];
 var tempID = "";
+var tempIDList = [];
 index = 0;    
     app.controller('FirebaseController', function($scope){
         //FirebaseController responsible for sending data to Firebase
@@ -17,8 +18,14 @@ index = 0;
                 if (isChild){
                     var active_question = ref.child(courseID);
                     var question_queue_item = ref.child(courseID).child("question_queue");
-                    index++;
-                    var tempString = 'question_id_' + index.toString();
+                    if (tempIDList == 0){
+                        index++;
+                        var tempString = 'question_id_' + index.toString();
+                    } else{
+                        var tempString = 'question_id_' + tempIDList[0].toString();
+                        tempIDList.shift()
+                    }
+                    
                     var tempQuery = {};
                     tempQuery[tempString] = question;
                     question_queue_item.update(tempQuery);
@@ -59,7 +66,7 @@ index = 0;
         $scope.saveData = function(courseID, question){
             tempID = courseID;
             //tempQuestionList.push(question);
-
+            alert(tempIDList.length);
             var ref = new Firebase("https://instantify.firebaseio.com/");
 
             ref.once("value", function(snapshot) {
@@ -67,8 +74,13 @@ index = 0;
             var index = snapshot.child(courseID).child("question_queue").numChildren();
                 if(isChild){
                     var question_list = ref.child(courseID).child("question_queue");
-                    index++;
-                    var tempString = 'question_id_' + index.toString();
+                    if (tempIDList == 0){
+                        index++;
+                        var tempString = 'question_id_' + index.toString();
+                    } else{
+                        var tempString = 'question_id_' + tempIDList[0].toString();
+                        tempIDList.shift()
+                    }
                     var tempQuery = {};
                     tempQuery[tempString] = question;
                     question_list.update(tempQuery);
@@ -129,6 +141,7 @@ index = 0;
                 $('.body-view-question li').remove();
                 $('.body-view-question span').remove();
                 $('.body-view-question hr').remove();
+                tempIDList = [];
             })
 
             $('#change-courseID').on('click', function(){
@@ -166,6 +179,8 @@ index = 0;
 
             $('.body-view-question').on('click', '.fa-trash-o', function(event){
                 var data_value = $(this).parent().prev().data('value');
+                var num = data_value.split('_');
+                tempIDList.push(num[2]);
                 if ($(this).parent().prev().attr('id') == 'active'){
                     alert("Can't delete active question");
                     //$(this).children('i').attr('.fa-trash-o').off('click');
