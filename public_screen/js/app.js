@@ -103,7 +103,7 @@ index = 0;
                     $('.questions').append('<li class="added" id="active">' +  active_question + '</li><span class="icons"><i class="fa fa-trash-o"></i><i class="fa fa-check-square-o"></i></span><hr>');
                 }
                 else{
-                    $('.questions').append('<li class="question added">' +  snapshot.val() + '</li><span class="icons"><i class="fa fa-trash-o"></i><i class="fa fa-square-o"></i></span><hr>');
+                    $('.questions').append('<li class="question added" id="delete" data-value="' + snapshot.key() + '">' +  snapshot.val() + '</li><span class="icons"><i class="fa fa-trash-o"></i><i class="fa fa-square-o"></i></span><hr>');
                 }
             });
         });
@@ -162,6 +162,24 @@ index = 0;
                     ref.update({'active_questions' : question});
                     
                 }
+            })
+
+            $('.body-view-question').on('click', '.fa-trash-o', function(event){
+                var data_value = $(this).parent().prev().data('value');
+                if ($(this).parent().prev().attr('id') == 'active'){
+                    alert("Can't delete active question");
+                    //$(this).children('i').attr('.fa-trash-o').off('click');
+                    //$(this).children('i').attr('.fa-trash-o').css({'color':'green'})
+                }else{
+                    var deleteRef = new Firebase("https://instantify.firebaseio.com/" + tempID + "/question_queue/" + data_value);
+                    deleteRef.remove();
+
+                    $(this).parent().next().remove();
+                    $(this).parent().prev().remove();
+                    $(this).parent().remove();
+                    $(this).prev().remove();
+                }
+                
             })
             
         });

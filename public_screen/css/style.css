@@ -129,15 +129,13 @@ h3{
 }
 
 .fa{
-	margin-top: -3%;
+	cursor: pointer;
+	
 }
-/*)
-.fa-trash-o, .fa-square-o{
-	width:5%;
-		float:right;
 
-}*/
-
+.fa:hover{
+	font-size: 18px;
+}
 
 .fa-trash-o {
 	padding: 1%;
@@ -164,9 +162,13 @@ h3{
 	margin-top:5%;
 }
 
-.body-view-question li .fa-trash-o, .fa-square-o, .fa-check-square-o{
+.body-view-question li .fa-trash-o{
 	float:right;
 	margin: 0 0% 0 4%;
+}
+
+.fa-check-square-o, .fa-square-o{
+    margin: -5% 0% 0 4%;
 }
 
 
