@@ -5,6 +5,45 @@ var tempQuestionList = [];
 var tempID = "";
 var tempIDList = [];
 index = 0;    
+    app.controller('FirebaseController', function($scope){
+        //FirebaseController responsible for sending data to Firebase
+
+        $scope.submitData = function(courseID, question){
+            var ref = new Firebase("https://instantify.firebaseio.com");
+            var active_question = ref.child(courseID);
+            ref.once("value", function(snapshot) {
+                var isChild = snapshot.hasChild(courseID);
+                var pushRef = ref.child(courseID).child('question_queue');
+                var pushpushRef = pushRef.push();
+                if(isChild){
+                    active_question.update({"active_question" : question});
+                    pushpushRef.set(question);
+                }
+                else{
+                    var postID = pushpushRef.key();
+                    var dataTable = ref.child(courseID);
+                    var tempQuery = {};
+                    tempQuery[postID] = question;
+                    
+                    dataTable.set({
+                        active_question: question,
+                        answers: {'testkey' : 'XX'},
+                        history: {'testkey' : 'XX'},
+                        question_queue: tempQuery
+                    });
+                }
+                
+            });
+        }
+
+    });   
+
+        
+
+    app.controller("SampleCtrl", function($scope, $firebaseArray) {
+        var ref = new Firebase("https://instantify.firebaseio.com/" + tempID +"/question_queue");
+        $scope.messages = $firebaseArray(ref); 
+    });
 
     app.controller('MessageController', function($scope){
         this.msgID='Course ID';
@@ -18,7 +57,9 @@ index = 0;
     app.controller('SaveController', function($scope, $firebaseArray){        
         $scope.saveData = function(courseID, question){
             tempID = courseID;
+            //tempQuestionList.push(question);
             var ref = new Firebase("https://instantify.firebaseio.com/");
+            //var pushRef = ref.child('question_queue');
 
             ref.once("value", function(snapshot) {
             var isChild = snapshot.hasChild(courseID);
