@@ -45,7 +45,7 @@
 								<form>
 									<input ng-model="courseID" id="courseID" type="text" placeholder={{Ctrl.msgID}}></input>
 									<input ng-model="question" id="question" type="text" placeholder={{Ctrl.msgInput}}></input>
-									<input type="button" ng-click="submitData(courseID, question)" value={{Ctrl.btnSubmit}}></input>
+									<a href="wordcloud.html" class="a-btn" type="button" ng-click="submitData(courseID, question)">{{Ctrl.btnSubmit}}</a>
 									<input ng-controller="SaveController" type="button" class="save-element" ng-click="
 									saveData(courseID, question);getListData(courseID);$event.stopPropagnation;" value={{Ctrl.btnSave}}></input>
 								
@@ -59,10 +59,10 @@
 								<div class="header-view-question">
 									<h2>Your saved questions</h2>
 								</div>
-								<div class="body-view-question" >
+								<div class="body-view-question" ng-controller="SaveController">
 									<form>
-									<input ng-model="ID" id="ID" type="text" placeholder={{Ctrl.msgID}}></input>
-									<input ng-controller="SaveController" type="button" class="save-element" ng-click="getListData(ID)" value={{Ctrl.btnSave}}></input>
+									<input ng-model="courseID" type="text" placeholder={{Ctrl.msgID}}></input>
+									<input ng-controller="SaveController" type="button" ng-click="getListData(courseID)" value={{Ctrl.btnSave}}></input>								
 								</form>
 									<div class="questions"></div>
 									<!--<ul ng-controller="SampleCtrl">
