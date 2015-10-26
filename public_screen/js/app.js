@@ -5,53 +5,6 @@ var tempQuestionList = [];
 var tempID = "";
 var tempIDList = [];
 index = 0;    
-    app.controller('FirebaseController', function($scope){
-        //FirebaseController responsible for sending data to Firebase
-
-        $scope.submitData = function(courseID, question){
-
-            var ref = new Firebase("https://instantify.firebaseio.com");
-            ref.once("value", function(snapshot) {
-                var isChild = snapshot.hasChild(courseID);
-                var index = snapshot.child(courseID).child("question_queue").numChildren();
-
-                if (isChild){
-                    var active_question = ref.child(courseID);
-                    var question_queue_item = ref.child(courseID).child("question_queue");
-                    if (tempIDList == 0){
-                        index++;
-                        var tempString = 'question_id_' + index.toString();
-                    } else{
-                        var tempString = 'question_id_' + tempIDList[0].toString();
-                        tempIDList.shift()
-                    }
-                    
-                    var tempQuery = {};
-                    tempQuery[tempString] = question;
-                    question_queue_item.update(tempQuery);
-                    active_question.update({"active_question" : question});
-                }
-                else{
-                var dataTable = ref.child(courseID);
-                
-                dataTable.set({
-                    active_question: question,
-                    answers: {'testkey' : 'testvalue'},
-                    history: {'testkey' : 'testvalue'},
-                    question_queue: {"question_id_1" : question}
-                    });
-                }
-            });
-        }
-
-    });   
-
-        
-
-    app.controller("SampleCtrl", function($scope, $firebaseArray) {
-        var ref = new Firebase("https://instantify.firebaseio.com/" + tempID +"/question_queue");
-        $scope.messages = $firebaseArray(ref); 
-    });
 
     app.controller('MessageController', function($scope){
         this.msgID='Course ID';
@@ -65,9 +18,7 @@ index = 0;
     app.controller('SaveController', function($scope, $firebaseArray){        
         $scope.saveData = function(courseID, question){
             tempID = courseID;
-            //tempQuestionList.push(question);
             var ref = new Firebase("https://instantify.firebaseio.com/");
-            //var pushRef = ref.child('question_queue');
 
             ref.once("value", function(snapshot) {
             var isChild = snapshot.hasChild(courseID);
@@ -173,8 +124,6 @@ index = 0;
 
             $('.body-view-question').on('click', '.fa-trash-o', function(event){
                 var data_value = $(this).parent().prev().data('value');
-                var num = data_value.split('_');
-                tempIDList.push(num[2]);
                 if ($(this).parent().prev().attr('id') == 'active'){
                     alert("Can't delete active question");
                     //$(this).children('i').attr('.fa-trash-o').off('click');
