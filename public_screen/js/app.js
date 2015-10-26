@@ -66,7 +66,6 @@ index = 0;
         $scope.saveData = function(courseID, question){
             tempID = courseID;
             //tempQuestionList.push(question);
-            alert(tempIDList.length);
             var ref = new Firebase("https://instantify.firebaseio.com/");
 
             ref.once("value", function(snapshot) {
