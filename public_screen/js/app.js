@@ -29,13 +29,13 @@ index = 0;
                     var tempQuery = {};
                     tempQuery[tempString] = question;
                     question_queue_item.update(tempQuery);
-                    active_question.update({"active_questions" : question});
+                    active_question.update({"active_question" : question});
                 }
                 else{
                 var dataTable = ref.child(courseID);
                 
                 dataTable.set({
-                    active_questions: question,
+                    active_question: question,
                     answers: {'testkey' : 'testvalue'},
                     history: {'testkey' : 'testvalue'},
                     question_queue: {"question_id_1" : question}
@@ -67,32 +67,27 @@ index = 0;
             tempID = courseID;
             //tempQuestionList.push(question);
             var ref = new Firebase("https://instantify.firebaseio.com/");
+            //var pushRef = ref.child('question_queue');
 
             ref.once("value", function(snapshot) {
             var isChild = snapshot.hasChild(courseID);
-            var index = snapshot.child(courseID).child("question_queue").numChildren();
+            var pushRef = ref.child(courseID).child('question_queue');
+            var pushpushRef = pushRef.push();
                 if(isChild){
-                    var question_list = ref.child(courseID).child("question_queue");
-                    if (tempIDList == 0){
-                        index++;
-                        var tempString = 'question_id_' + index.toString();
-                    } else{
-                        var tempString = 'question_id_' + tempIDList[0].toString();
-                        tempIDList.shift()
-                    }
-                    var tempQuery = {};
-                    tempQuery[tempString] = question;
-                    question_list.update(tempQuery);
+                    pushpushRef.set(question);
                 }
                 else{
+                    var postID = pushpushRef.key();
                     var dataTable = ref.child(courseID);
+                    var tempQuery = {};
+                    tempQuery[postID] = question;
+                    
                     dataTable.set({
-                        active_questions: question,
+                        active_question: question,
                         answers: {'testkey' : 'XX'},
                         history: {'testkey' : 'XX'},
-                        question_queue: {'question_id_1' : question}
+                        question_queue: tempQuery
                     });
-
                 }
 
            })
@@ -103,7 +98,7 @@ index = 0;
             $('.body-view-question li').remove();
             $('.body-view-question span').remove();
             $('.body-view-question hr').remove();
-            var active = new Firebase("https://instantify.firebaseio.com/" + courseID).child('active_questions');
+            var active = new Firebase("https://instantify.firebaseio.com/" + courseID).child('active_question');
             var ref = new Firebase("https://instantify.firebaseio.com/" + courseID + "/question_queue");
             ref.off('child_added'); 
             active.off('value')
@@ -171,7 +166,7 @@ index = 0;
                     $('.body-view-question span').remove();
                     $('.body-view-question hr').remove();
                     var ref = new Firebase("https://instantify.firebaseio.com/" + tempID);
-                    ref.update({'active_questions' : question});
+                    ref.update({'active_question' : question});
                     
                 }
             })

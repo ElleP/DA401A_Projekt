@@ -47,7 +47,7 @@
 									<input ng-model="question" id="question" type="text" placeholder={{Ctrl.msgInput}}></input>
 									<input type="button" ng-click="submitData(courseID, question)" value={{Ctrl.btnSubmit}}></input>
 									<input ng-controller="SaveController" type="button" class="save-element" ng-click="
-									saveData(courseID, question);getListData(courseID, question);$event.stopPropagnation;" value={{Ctrl.btnSave}}></input>
+									saveData(courseID, question);getListData(courseID);$event.stopPropagnation;" value={{Ctrl.btnSave}}></input>
 								
 									<!--<br><br><i class="fa fa-plus-circle save-element fa-3x" ng-controller="SaveController" type="button" ng-click="saveData(courseID, question);getListData(courseID);$event.stopPropagnation;"></i><i ng-click="submitData(courseID, question)" class="fa fa-play-circle fa-3x" ></i> -->
 
@@ -62,9 +62,8 @@
 								<div class="body-view-question" >
 									<form>
 									<input ng-model="ID" id="ID" type="text" placeholder={{Ctrl.msgID}}></input>
-									<input ng-controller="SaveController" type="button" class="save-element" ng-click="getListData(ID);$event.stopPropagnation;" value={{Ctrl.btnSave}}></input>
+									<input ng-controller="SaveController" type="button" class="save-element" ng-click="getListData(ID)" value={{Ctrl.btnSave}}></input>
 								</form>
-									<div class="active-question"></div>
 									<div class="questions"></div>
 									<!--<ul ng-controller="SampleCtrl">
 										<li ng-repeat="message in messages">{{ message.$value }}</li>
