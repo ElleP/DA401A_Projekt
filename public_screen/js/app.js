@@ -9,6 +9,9 @@ index = 0;
         //FirebaseController responsible for sending data to Firebase
 
         $scope.submitData = function(courseID, question){
+            $('.body-view-question li').remove();
+            $('.body-view-question span').remove();
+            $('.body-view-question hr').remove();
             var ref = new Firebase("https://instantify.firebaseio.com");
             var active_question = ref.child(courseID);
             ref.once("value", function(snapshot) {
