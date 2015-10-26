@@ -49,7 +49,7 @@ index = 0;
     });
 
     app.controller('MessageController', function($scope){
-        this.msgID='Course ID';
+        this.msgID='ID';
         this.msgCreate='Create question';
         this.btnSubmit='Start';
         this.btnSave='Save';
