@@ -40,14 +40,11 @@
 								<h2>{{Ctrl.msgCreate}}</h2>
 							</div>
 							<div class="body-question">
-								<p id="current-courseID"></p>
-                				<button id="change-courseID">Change courseID</button>
+								<!--<p id="current-courseID"></p>
+                				<button id="change-courseID">Change courseID</button>-->
 								<form>
-									<input ng-model="courseID" type="text" placeholder={{Ctrl.msgID}}></input>
-									<input ng-controller="SaveController" class="save-element" type="button" ng-click="getListData(courseID)" value="Get"></input>	
-
+									<input ng-model="courseID" id="courseID" type="text" placeholder={{Ctrl.msgID}}></input>
 									<input ng-model="question" id="question" type="text" placeholder={{Ctrl.msgInput}}></input>
-									
 									
 
 									<a href="wordcloud.html" target="_blank" class="a-btn" type="button" ng-click="submitData(courseID, question)">{{Ctrl.btnSubmit}}</a>
@@ -65,24 +62,19 @@
 
 								</div>
 								<div class="body-view-question" ng-controller="SaveController">
-									
+									<p id="current-courseID"></p>
+                					<button id="change-courseID">Change courseID</button>
+									<input ng-model="courseID" id="ID" type="text" placeholder={{Ctrl.msgID}}></input>
+									<input ng-controller="SaveController" type="button" id="get-btn" class="save-element" ng-click="getListData(courseID)" value="Get"></input>
 									<!--<h3>Questions</h3>-->
 									<div class="questions"></div>
 									<!--<ul ng-controller="SampleCtrl">
 										<li ng-repeat="message in messages">{{ message.$value }}</li>
 									</ul>-->
 								</div>
+
 							</div>
 						</div> <!--end of .box-view-->
-						<!--<div class="col-md-6 box-id">
-							<div class="header-question">
-								<h2>ID</h2>
-							</div>
-							<form>
-								<input ng-model="courseID" type="text" placeholder={{Ctrl.msgID}}></input>
-								<input ng-controller="SaveController" class="save-element" type="button" ng-click="getListData(courseID)" value="Get"></input>								
-							</form>
-						</div>--><!--End of .box-add-->
 					</div><!--End of .row-->
 				</div><!--End of .col-->
 			</div><!--End of .row-->
