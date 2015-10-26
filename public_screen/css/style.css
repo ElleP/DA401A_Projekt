@@ -92,7 +92,11 @@ h3{
 	margin-top:2% !important;
 }
 
-.box-add form input[type=text]{
+.id{
+	height:120px!important;
+}
+
+.box-add input[type=text]{
 	font-size: 1.15em;
 	font-family: 'Muli', sans-serif;
 	border:none;
@@ -103,11 +107,11 @@ h3{
 	margin-top: 0%;
 }
 
-.box-add form input[type=text]:first-child{
+.box-add input[type=text]:first-child{
 	margin: 5% 0 5% 0%;
 }
 
-.box-add form input[type=button], .box-add .a-btn, #get-btn{
+.box-add input[type=button], .box-add .a-btn, #get-btn{
 	font-family: 'Muli', sans-serif;
 	font-weight: 300;
 	margin:7% 5% 3% 0%;
@@ -135,36 +139,12 @@ h3{
 	float:right;
 }
 
-.body-view-question input[type=text]{
-	font-size: 1.15em;
-	font-family: 'Muli', sans-serif;
-	border:none;
-	border-bottom:1px solid #ccc;
-	width:75%;
-	height:40px;
-	padding: 0 0 0 0%;
-	margin-top: 0%;
-}
 
 .box-view input[type=text]:first-child{
 	margin: 5% 0 5% 0%;
 }
 
 
-.box-view form input[type=button], .box-view .a-btn{
-	font-family: 'Muli', sans-serif;
-	font-weight: 300;
-	margin:7% 0% 3% 0%;
-	display:block;
-	width:20%;
-	height:30px;
-	text-align: center;
-	box-shadow: 2px 2px 5px 0px rgba(50,50,50,.5);
-	background-color:#ddd;
-	font-size: 1.15em;
-	border:none;
-	float:right;
-}
 
 .a-btn, .a-btn:focus, .a-btn:hover, .a-btn:active{
 	padding-top: 1%;
