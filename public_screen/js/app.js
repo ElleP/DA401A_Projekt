@@ -96,6 +96,7 @@ var lclStorageID = "";
         }
 
         $scope.getListData = function(courseID){
+            tempID = courseID;
             $('.body-view-question li').remove();
             $('.body-view-question span').remove();
             $('.body-view-question hr').remove();
@@ -118,18 +119,18 @@ var lclStorageID = "";
 
         
         $(function(){
-            $('.save-element').on("click", function(){
-
+            $('.save-element').on("click", function(event){
                 $('#courseID').val('');
                 $('#question').val('');
 
                 //Byter ut input fält till paragraf med kursID
-                $('#courseID').css({'display':'none'});
+                $('#ID').css({'display':'none'});
                 $('#current-courseID').css({
                     'display':'block'
-                    }).text('CourseID: ' + tempID);
+                    }).text(tempID);
                 $('#change-courseID').css({'display':'block'});
-                
+                $('#get-btn').css({'display':'none'});
+                event.stopPropagation();
             });
 
             $('#change-courseID').on('click', function(){
@@ -145,6 +146,7 @@ var lclStorageID = "";
                     'display':'none'
                 }).text('CourseID: ' + tempID);
                 $('#change-courseID').css({'display':'none'});
+                $('#get-btn').css({'display':'block'});
                 $('.body-view-question p').remove();
                 $('.body-view-question button').remove();
             })

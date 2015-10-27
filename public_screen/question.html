@@ -36,11 +36,12 @@
 			<div id="row">
 				<div class="col-md-12" >
 					<div ng-controller="MessageController as Ctrl" class="row">
+
 						<div class="col-md-6 box-add">
 							<div class="header-question">
-								<h2>{{Ctrl.msgCreate}}</h2>
+								<h2>ID</h2>
 							</div>
-							<div class="body-question">
+							<div class="body-question id">
 								<p id="current-courseID"></p>
                 				<button id="change-courseID">Change courseID</button>
 
@@ -53,7 +54,7 @@
 									
 									<!--added setID()-->
 									<a href="wordcloud.html" target="_blank" class="a-btn" type="button" ng-click="submitData(courseID, question); setID(courseID);">{{Ctrl.btnSubmit}}</a>
-									
+
 									<input ng-controller="SaveController" type="button" class="save-element" ng-click="saveData(courseID, question);$event.stopPropagnation;" value={{Ctrl.btnSave}}></input>
 								
 									<!--<br><br><i class="fa fa-plus-circle save-element fa-3x" ng-controller="SaveController" type="button" ng-click="saveData(courseID, question);getListData(courseID);$event.stopPropagnation;"></i><i ng-click="submitData(courseID, question)" class="fa fa-play-circle fa-3x" ></i> -->
@@ -64,7 +65,7 @@
 						<div class="col-md-6 box-view">
 							<div class="view-question">
 								<div class="header-view-question">
-									<h2>Your saved questions</h2>
+									<h2>Saved questions</h2>
 
 								</div>
 								<div class="body-view-question" ng-controller="SaveController">
@@ -75,17 +76,9 @@
 										<li ng-repeat="message in messages">{{ message.$value }}</li>
 									</ul>-->
 								</div>
+
 							</div>
 						</div> <!--end of .box-view-->
-						<!--<div class="col-md-6 box-id">
-							<div class="header-question">
-								<h2>ID</h2>
-							</div>
-							<form>
-								<input ng-model="courseID" type="text" placeholder={{Ctrl.msgID}}></input>
-								<input ng-controller="SaveController" class="save-element" type="button" ng-click="getListData(courseID)" value="Get"></input>								
-							</form>
-						</div>--><!--End of .box-add-->
 					</div><!--End of .row-->
 				</div><!--End of .col-->
 			</div><!--End of .row-->
