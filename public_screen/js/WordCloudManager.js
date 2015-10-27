@@ -12,8 +12,6 @@ var courseID = localStorage.id;
 
 		this.getData = function(){
 
-			console.log("Function call: getData");
-
 			var myList = new Array();
 
 			ref.once("value", function(snapshot) {
@@ -23,19 +21,24 @@ var courseID = localStorage.id;
 				    myList.push(childSnapshot.val());
 				});
 
-				console.log("generating cloud... ");
-
-				console.log("cloud data: " + myList.length);
-
 				var formattedList = [];
 				formattedList = formatList(myList);
-
+				var canvas = document.getElementById('myCanvas');
 				obj = {
-					list:formattedList
+					list:formattedList, 
+					gridSize: Math.round(16 * canvas.width / 1024),
+  					weightFactor: function (size) {
+    				return Math.pow(size, 2.8) * canvas.width / 2068;
+  					},
+  					fontFamily: 'Times, serif',
+  					color: function (word, weight) {
+    				return (weight === 12) ? '#f02222' : '#c09292';
+  					},
+  					rotateRatio: 0.5,
+  					backgroundColor: '#ffe0e0'
   				}
-
 				WordCloud(document.getElementById('myCanvas'), obj);
-				});
+			});
 		};
 
 		var formatList = function(data){

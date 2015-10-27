@@ -6,6 +6,7 @@
 	margin:0;
 	padding:0;
 	-webkit-font-smoothing: antialiased;
+
 }
 
 .col-md-6, .col-md-5{
@@ -24,6 +25,14 @@ header img{
 
 nav{
 	float:right;
+}
+
+#myCanvas {
+    padding-left: 0;
+    padding-right: 0;
+    margin-left:auto !important;
+    margin-right:auto !important;
+    display: block;
 }
 
 /* Styling for .box and elements in .box surrounding form */
@@ -241,6 +250,20 @@ input:focus::-webkit-input-placeholder {
 	margin:5% 5% 6.5% 0;
 	height:30px;
 }
+
+#wordcloud h1{
+	text-align: center;
+	font-size: 2em;
+	font-family: 'Open sans', sans-serif;
+}
+
+#wordcloud h2{
+	text-align: center;
+	font-size: 1.7em;
+	font-family: 'Open sans', sans-serif;
+
+}
+
 
 
 

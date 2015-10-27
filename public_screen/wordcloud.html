@@ -2,6 +2,8 @@
 
 <html ng-app="cloudMgr">
 	<head>
+		<link href="css/style.css" rel="stylesheet" type="text/css">
+
 
 		<!--Angular-->		
 		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
@@ -14,17 +16,15 @@
 		<script type="text/javascript" src="js/wordcloud2.js-master/src/wordcloud2.js"></script>
 		<script type="text/javascript" src="js/WordCloudManager.js"></script>
 
-
-
 	</head>
 		<body>
-			<div ng-controller="CloudController as ctrl">
-				<h1> Is this a good question? </h1>
-				<h2>{{ctrl.identifier}}</h2>
+			<div id="wordcloud" ng-controller="CloudController as ctrl">
+				<h1> {{ctrl.identifier}}</h1>
+				<h2>Is this a good question? </h2>
 			</div>
 			<div ng-controller="CloudController as mgr">
 				<input type="button" value="Generate Word Cloud" ng-click="mgr.getData()"></input>
 			</div>
-			<canvas id="myCanvas"></canvas>
+			<canvas id="myCanvas" width="1200" height="690"></canvas>
 		</body>
 </html>
