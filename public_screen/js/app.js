@@ -5,10 +5,14 @@ var tempQuestionList = [];
 var tempID = "";
 var tempIDList = [];
 index = 0;    
+var lclStorageID = "";
+
     app.controller('FirebaseController', function($scope){
         //FirebaseController responsible for sending data to Firebase
 
         $scope.submitData = function(courseID, question){
+            alert("submitData");
+            lclStorageID = courseID;
             $('.body-view-question li').remove();
             $('.body-view-question span').remove();
             $('.body-view-question hr').remove();
@@ -35,17 +39,21 @@ index = 0;
                         question_queue: tempQuery
                     });
                 }
-                
             });
         }
-
     });   
 
-        
-
-    app.controller("SampleCtrl", function($scope, $firebaseArray) {
-        var ref = new Firebase("https://instantify.firebaseio.com/" + tempID +"/question_queue");
-        $scope.messages = $firebaseArray(ref); 
+    app.controller("LocalStorageController", function($scope){
+        $scope.setID = function(courseID){
+            alert("setID");
+            if (typeof(Storage) !== "undefined") {
+                localStorage.setItem("id", courseID);
+                console.log(localStorage.id);
+            }
+            else{ 
+                document.getElementById("result").innerHTML = "Sorry, your browser does not support Web"
+            }
+        };        
     });
 
     app.controller('MessageController', function($scope){
@@ -56,8 +64,8 @@ index = 0;
         this.msgInput='Type question here';
     })
 
+    app.controller('SaveController', function($scope, $firebaseArray){    
 
-    app.controller('SaveController', function($scope, $firebaseArray){        
         $scope.saveData = function(courseID, question){
             tempID = courseID;
             //tempQuestionList.push(question);
@@ -183,7 +191,7 @@ index = 0;
                 }
                 
             })
-            
+                      
         });
 
     }) 

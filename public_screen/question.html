@@ -19,6 +19,7 @@
     <script src="https://cdn.firebase.com/libs/angularfire/1.1.3/angularfire.min.js"></script>
     <script src="js/app.js"></script>
     
+    
     <!--Firebase-->
     <script src="https://cdn.firebase.com/js/client/2.2.4/firebase.js"></script>
 
@@ -42,15 +43,17 @@
 							<div class="body-question">
 								<p id="current-courseID"></p>
                 				<button id="change-courseID">Change courseID</button>
-								<form>
+
+                				<!--added controller-->
+								<form ng-controller="LocalStorageController">
 									<input ng-model="courseID" type="text" placeholder={{Ctrl.msgID}}></input>
 									<input ng-controller="SaveController" class="save-element" type="button" ng-click="getListData(courseID)" value="Get"></input>	
 
 									<input ng-model="question" id="question" type="text" placeholder={{Ctrl.msgInput}}></input>
 									
+									<!--added setID()-->
+									<a href="wordcloud.html" target="_blank" class="a-btn" type="button" ng-click="submitData(courseID, question); setID(courseID);">{{Ctrl.btnSubmit}}</a>
 									
-
-									<a href="wordcloud.html" target="_blank" class="a-btn" type="button" ng-click="submitData(courseID, question)">{{Ctrl.btnSubmit}}</a>
 									<input ng-controller="SaveController" type="button" class="save-element" ng-click="saveData(courseID, question);$event.stopPropagnation;" value={{Ctrl.btnSave}}></input>
 								
 									<!--<br><br><i class="fa fa-plus-circle save-element fa-3x" ng-controller="SaveController" type="button" ng-click="saveData(courseID, question);getListData(courseID);$event.stopPropagnation;"></i><i ng-click="submitData(courseID, question)" class="fa fa-play-circle fa-3x" ></i> -->
