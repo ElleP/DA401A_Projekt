@@ -1,7 +1,7 @@
 (function(){
 var cloudMgr = angular.module('cloudMgr', []);
 
-var courseID = "M_001";
+var courseID = localStorage.id;
 
 	cloudMgr.controller('CloudController', function(){
 
