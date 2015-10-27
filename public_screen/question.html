@@ -73,8 +73,7 @@
 										<form ng-controller="LocalStorageController">
 											<input ng-model="courseID" id="courseID" type="text" placeholder={{Ctrl.msgID}}></input>
 											<input ng-model="question" id="question" type="text" placeholder={{Ctrl.msgInput}}></input>
-											
-
+			
 											<a href="wordcloud.html" target="_blank" class="a-btn" type="button" ng-click="submitData(courseID, question); setID(courseID);">{{Ctrl.btnSubmit}}</a>
 
 										</form>
@@ -97,33 +96,24 @@
 											<p id="verification"><p>
 											<input ng-controller="SaveController" type="button" id="save-element" class="save-element" ng-click="saveData(ID, question);getListData(courseID);$event.stopPropagnation;" value={{Ctrl.btnSave}}></input>
 										</form>
-										
+
 									</div><!--End of .body-queestion-->
-								</div> <!--End of .col-md-10-->
-								<div class="col-md-10 col-md-offset-1">
 								</div> <!--End of .col-md-10-->
 							</div> <!--End of .row-->
 						</div><!--End of .box-add-->
 		
 						<div class="box-view" style="display:none">
-							<div class="view-question">
-								<div class="header-view-question">
-									<h2>Input ID to view your saved questions</h2>
-
-								</div>
-								<div id="row" >
-									<div class="col-md-10 col-md-offset-1">
-										<div class="body-view-question" ng-controller="SaveController">
-											<p id="current-courseID"></p>
-		                					<button id="change-courseID">Change courseID</button>
-											<input ng-model="cID" id="ID" type="text" placeholder={{Ctrl.msgID}}></input>
-											<input ng-controller="SaveController" type="button" id="get-btn" class="save-element" ng-click="getListData(cID)" value="Get"></input>
-											<!--<h3>Questions</h3>-->
-											<div class="questions"></div>
-											<!--<ul ng-controller="SampleCtrl">
-												<li ng-repeat="message in messages">{{ message.$value }}</li>
-											</ul>-->
-										</div>
+							<div class="header-view-question">
+								<h2>Input ID to view your saved questions</h2>
+							</div>
+							<div id="row" >
+								<div class="col-md-10 col-md-offset-1">
+									<div class="body-view-question" ng-controller="SaveController">
+										<p id="current-courseID"></p>
+	                					<button id="change-courseID">Change courseID</button>
+										<input ng-model="cID" id="ID" type="text" placeholder={{Ctrl.msgID}}></input>
+										<input ng-controller="SaveController" type="button" id="get-btn" class="save-element" ng-click="getListData(cID)" value="Get"></input>						
+										<div class="questions"></div>
 									</div>
 								</div>
 							</div>

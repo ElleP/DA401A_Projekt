@@ -90,7 +90,7 @@ var lclStorageID = "";
                         question_queue: tempQuery
                     });
                 }
-            $('#verification').text('"' + question + '" has been added to ' + courseID).css({'color':'rgba(127,19,27,1)', 'position':'relative', 'top':'10px'});
+            $('#verification').text('Frågan "' + question + '" has been added to ' + courseID).css({'color':'rgba(127,19,27,1)', 'position':'relative', 'top':'10px'});
 
            })
             

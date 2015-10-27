@@ -9,7 +9,6 @@
 
 }
 
-
 .col-md-6, .col-md-5{
 	padding:0 !important;
 }
@@ -68,12 +67,6 @@ nav p{
 	width:45px;
 }
 
-.box-add, .box-new{
-	height:400px;
-}
-
-
-
 nav a{
 	width:100px;
 	height:100px;
@@ -104,49 +97,20 @@ h3{
 	font-style: italic;
 }
 
-.box-view{
-	min-height: 500px;
-}
-
 .header-question, .header-view-question{
 	background-color:rgba(127,19,27,1);
 	padding:0 0 0 0 ;
-	margin:0 40% 0 -15%;
+	margin:0 0% 0 -15.1%;
 	display: block;
     height: 50px;
     top: 0;
     width: 130%;
-    margin-bottom: 0%;
+    margin-bottom: 4%;
     position: relative;
     color:#fff;
 }
 
-.box-add .body-question{
-	height:220px;
-}
-
-
-.box-view .body-view-question{
-	min-height: 237px;
-	padding:2%;
-	text-align: left;
-}
-
-.box .body-view-question p:first-child{
-	font-size: 1.6em;
-	text-align: left;
-	padding: 2% 0 4% 0;
-}
-
-.box form{
-	margin-top:6%;
-}
-
-#question{
-	margin-top:2% !important;
-}
-
- form input[type=text]{
+form input[type=text]{
 	font-size: 1.15em;
 	font-family: 'Muli', sans-serif;
 	border:none;
@@ -157,11 +121,11 @@ h3{
 	margin-top: 0%;
 }
 
- form input[type=text]:first-child{
+form input[type=text]:first-child{
 	margin: 5% 0 5% 0%;
 }
 
- form input[type=button], .box-add .a-btn, #get-btn{
+form input[type=button], .box-add .a-btn, #get-btn{
 	font-family: 'Muli', sans-serif;
 	font-weight: 300;
 	margin:7% 5% 3% 0%;
@@ -175,37 +139,18 @@ h3{
 	float:right;
 }
 
-#get-btn{
-	font-family: 'Muli', sans-serif;
-	font-weight: 300;
-	margin:2% 2% 3% 0%;
-	display:block;
-	width:20%;
-	height:30px;
-	box-shadow: 2px 2px 5px 0px rgba(50,50,50,.5);
-	background-color:#ddd;
-	font-size: 1.15em;
-	border:none;
-	float:right;
-}
-
-.body-view-question input[type=text]{
+.box-view input[type=text]{
 	font-size: 1.15em;
 	font-family: 'Muli', sans-serif;
 	border:none;
 	border-bottom:1px solid #ccc;
-	width:75%;
+	width:70%;
 	height:40px;
-	padding: 0 0 0 0%;
-	margin-top: 0%;
+	margin: 0 10% 0 0%;
+	margin-top: 5.6%;
 }
 
-.box-view input[type=text]:first-child{
-	margin: 5% 0 5% 0%;
-}
-
-
-.box-view form input[type=button], .box-view .a-btn{
+form input[type=button], .box-view .a-btn, #get-btn{
 	font-family: 'Muli', sans-serif;
 	font-weight: 300;
 	margin:7% 0% 3% 0%;
@@ -226,12 +171,14 @@ h3{
 	text-decoration: none;
 }
 
-
 .body-view-question li{
-	width:90%;
-	margin: 0;
 	list-style-type: none;
+	text-align: left;
+}
 
+.questions{
+	width: 78%!important;
+    margin: auto;
 }
 
 .fa{
@@ -250,18 +197,16 @@ h3{
 }
 
 .icons{
-	float: left;
-    display: block;
+	display: block;
     width: 10%;
     position: absolute;
-    right: 50px;
+    right: 150px;
     margin-top: -2.5%;
 }
 
 .body-view-question{
-	padding:30% 0;
-	width:90%;
-	margin:auto;
+	width: 90%;
+    margin: auto;
 }
 
 .body-view-question li:first-child{
@@ -318,7 +263,6 @@ input:focus::-webkit-input-placeholder {
 #verification{
 	height:20px;
 }
-
 
 #myCanvas{
 	padding-left:0;
