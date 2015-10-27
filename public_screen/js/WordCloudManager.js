@@ -24,70 +24,42 @@ var courseID = "M_001";
 
 			console.log("generating cloud... ");
 
-			//generateCloud(myList);
-
 			console.log("cloud data: " + myList.length);
 
 			var formattedList = [];
 			formattedList = formatList(myList);
 
-			console.log(formattedList.length);
-
-			//WordCloud(document.getElementById('myCanvas'), { list: formattedList } );
+			WordCloud(document.getElementById('myCanvas'), { list: formattedList } );
 			});
 		};
 
 		var formatList = function(data){
 
+
+			var temp = data.indexOf("xx");
+			data.pop(temp);
+
 			console.log(data);
 
-			var wordList = [];
-			var tempList = [];
-			var count = 0;
-			var word = "";
+			var a = [], b = [], prev;
+    
+   			 data.sort();
 
-			//iterate through data 
-			for (var i = 0; i < data.length; i++) { 
-
-				for (var j = 0; j < data.length; j++) {
-
-					if(data[i] == data[j]){
-						count++;
-						word = data[j];
-					}
-				};
-
-				tempList.push(word);
-				tempList.push(count);
-				
-				if(wordList.length >0){
-				for (var z = 0; z < wordList.length; z++) {
-					var isMatch = false;
-
-					if(tempList[0] == wordList[z][0]){
-						alert(wordList[z][0]);
-						 isMatch = true;
-					}
-					else{
-						isMatch = false;
-					}
-				};
-
-				if(isMatch == false){
-
-					wordList.push(tempList);
-				//}
-				tempList = [];
-				word = "";
-				count = 0;
-
+			   for ( var i = 0; i < data.length; i++ ) {
+			        if ( data[i] !== prev ) {
+			            a.push(data[i]);
+			            b.push(1);
+			        } else {
+			            b[b.length-1]++;
+			        }
+			        prev = data[i];
+			    }
+			    
+			    var result = [];
+			    for( var k = 0; k < a.length; k++) {
+			    	result.push([a[k], b[k]]);
+			    }
+			    return result;
 			}
-			};
-		}
-			console.log("WordList Count: " + wordList.length);
-			console.log(wordList);
-
-			return wordList;
-		};
 	})
 })();
