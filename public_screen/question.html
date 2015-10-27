@@ -74,7 +74,7 @@
 											<input ng-model="courseID" id="courseID" type="text" placeholder={{Ctrl.msgID}}></input>
 											<input ng-model="question" id="question" type="text" placeholder={{Ctrl.msgInput}}></input>
 			
-											<a href="wordcloud.html" target="_blank" class="a-btn" type="button" ng-click="submitData(courseID, question); setID(courseID);">{{Ctrl.btnSubmit}}</a>
+											<a href="wordcloud.html" target="_blank" class="a-btn" type="button" ng-click="submitData(courseID, question); setID(courseID);">{{Ctrl.btnSubmit}} WordCloud</a>
 
 										</form>
 									</div><!--End of .body-queestion-->
@@ -102,7 +102,7 @@
 							</div> <!--End of .row-->
 						</div><!--End of .box-add-->
 		
-						<div class="box-view" style="display:none">
+						<div class="box-view" style="display:none" ng-controller="SaveController">
 							<div class="header-view-question">
 								<h2>Input ID to view your saved questions</h2>
 							</div>

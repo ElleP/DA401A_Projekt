@@ -38,12 +38,27 @@ nav{
 	margin:2% 0% -2% 2%;
 	float:left;
 	display: inline;
+	transition:background-color 1s ease;
+
 }
 
 .active{
-	background-color: rgba(216,0,16,.5);
+	background-color: rgba(216,0,16,.5)!important;
 	border-radius: 5% 5% 0 0;
+	transition:background-color 1s ease;
 	
+}
+
+.active:hover{
+	background-color: rgba(216,0,16,.5)!important;
+	border-radius: 5% 5% 0 0;
+}
+
+.nav_a:hover{
+	background-color: rgba(150,150,150,.3);
+	border-radius: 5% 5% 0 0;
+		transition:background-color 1s ease;
+
 }
 
 nav p{
@@ -125,13 +140,13 @@ form input[type=text]:first-child{
 	margin: 5% 0 5% 0%;
 }
 
-form input[type=button], .box-add .a-btn, #get-btn{
+form input[type=button], .a-btn, #get-btn, #save-element{
 	font-family: 'Muli', sans-serif;
 	font-weight: 300;
 	margin:7% 5% 3% 0%;
 	display:block;
-	width:30%;
-	height:35px;
+	width:20%;
+	height:40px;
 	box-shadow: 2px 2px 5px 0px rgba(50,50,50,.5);
 	background-color:#ddd;
 	font-size: 1.15em;
@@ -150,19 +165,8 @@ form input[type=button], .box-add .a-btn, #get-btn{
 	margin-top: 5.6%;
 }
 
-form input[type=button], .box-view .a-btn, #get-btn{
-	font-family: 'Muli', sans-serif;
-	font-weight: 300;
+#get-btn{
 	margin:7% 0% 3% 0%;
-	display:block;
-	width:20%;
-	height:30px;
-	text-align: center;
-	box-shadow: 2px 2px 5px 0px rgba(50,50,50,.5);
-	background-color:#ddd;
-	font-size: 1.15em;
-	border:none;
-	float:right;
 }
 
 .a-btn, .a-btn:focus, .a-btn:hover, .a-btn:active{
