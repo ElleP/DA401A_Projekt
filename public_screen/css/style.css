@@ -9,6 +9,7 @@
 
 }
 
+
 .col-md-6, .col-md-5{
 	padding:0 !important;
 }
@@ -16,7 +17,8 @@
 header{
 	margin-top:0%;
 	padding:0% 0% 1% 4%;
-	background-color: #222;
+	background-color: #000;
+	border-bottom: 2px solid #333;
 }
 
 header img{
@@ -24,34 +26,77 @@ header img{
 }
 
 nav{
-	float:right;
+	padding-left: 13.8%;
+	height:120px;
+	background:url(../img/black_linen_v2.png);
+	text-align: center;
 }
 
-#myCanvas {
-    padding-left: 0;
-    padding-right: 0;
-    margin-left:auto !important;
-    margin-right:auto !important;
-    display: block;
+.nav_a{
+	height:114px;
+	color:#fff;
+	width:12%;
+	margin:2% 0% -2% 2%;
+	float:left;
+	display: inline;
+}
+
+.active{
+	background-color: rgba(216,0,16,.5);
+	border-radius: 5% 5% 0 0;
+	
+}
+
+nav p{
+	font-size: .8em;
+}
+
+#add-to-cloud .nav_a img, 
+#add-question .nav_a img, 
+#question-list .nav_a img,
+#about .nav_a img{
+	margin-top: 12%;
+	margin-bottom:6%;
+	height: 35px;
+	width:35px;
+}
+
+#add-to-cloud .nav_a img{
+	margin-top: 10%;
+	margin-bottom:2.5%;
+	height: 45px;
+	width:45px;
+}
+
+.box-add, .box-new{
+	height:400px;
+}
+
+
+
+nav a{
+	width:100px;
+	height:100px;
 }
 
 /* Styling for .box and elements in .box surrounding form */
-.box-add, .box-view{
-	width: 49% !important;
+.box-add, .box-view, .box-new{
     font-family: 'Muli', sans-serif;
     font-weight: 300;
-    margin: 4% .5% !important;
-	border:1px solid #ddd;
-	box-shadow: 1px 1px 1px 0px rgba(150,150,150,.5);
+	/*border:1px solid #ddd;
+	border-top: none;
+	box-shadow: 1px 1px 1px 0px rgba(150,150,150,.2);*/
 	padding:0%;
 	text-align: center;
 	margin:auto;
 }
 
-.box-add h2, .box-view h2{
-	margin: 2.5%;
+.box-add h2, .box-view h2, .box-new h2{
+	margin:0;
 	font-size: 1.2em;
-	text-align: center;
+	text-align: left;
+	color:#fff;
+	padding:1.5% 17.4%;	
 }
 
 h3{
@@ -63,14 +108,14 @@ h3{
 	min-height: 500px;
 }
 
-.box-add .header-question, .header-view-question{
-	padding:.5% 0 0 0 ;
-	background-color: #222;
-	margin:0;
+.header-question, .header-view-question{
+	background-color:rgba(127,19,27,1);
+	padding:0 0 0 0 ;
+	margin:0 40% 0 -15%;
 	display: block;
     height: 50px;
     top: 0;
-    width: 100%;
+    width: 130%;
     margin-bottom: 0%;
     position: relative;
     color:#fff;
@@ -101,11 +146,7 @@ h3{
 	margin-top:2% !important;
 }
 
-.id{
-	height:120px!important;
-}
-
-.box-add input[type=text]{
+ form input[type=text]{
 	font-size: 1.15em;
 	font-family: 'Muli', sans-serif;
 	border:none;
@@ -116,11 +157,11 @@ h3{
 	margin-top: 0%;
 }
 
-.box-add input[type=text]:first-child{
+ form input[type=text]:first-child{
 	margin: 5% 0 5% 0%;
 }
 
-.box-add input[type=button], .box-add .a-btn, #get-btn{
+ form input[type=button], .box-add .a-btn, #get-btn{
 	font-family: 'Muli', sans-serif;
 	font-weight: 300;
 	margin:7% 5% 3% 0%;
@@ -148,12 +189,36 @@ h3{
 	float:right;
 }
 
+.body-view-question input[type=text]{
+	font-size: 1.15em;
+	font-family: 'Muli', sans-serif;
+	border:none;
+	border-bottom:1px solid #ccc;
+	width:75%;
+	height:40px;
+	padding: 0 0 0 0%;
+	margin-top: 0%;
+}
 
 .box-view input[type=text]:first-child{
 	margin: 5% 0 5% 0%;
 }
 
 
+.box-view form input[type=button], .box-view .a-btn{
+	font-family: 'Muli', sans-serif;
+	font-weight: 300;
+	margin:7% 0% 3% 0%;
+	display:block;
+	width:20%;
+	height:30px;
+	text-align: center;
+	box-shadow: 2px 2px 5px 0px rgba(50,50,50,.5);
+	background-color:#ddd;
+	font-size: 1.15em;
+	border:none;
+	float:right;
+}
 
 .a-btn, .a-btn:focus, .a-btn:hover, .a-btn:active{
 	padding-top: 1%;
@@ -250,21 +315,17 @@ input:focus::-webkit-input-placeholder {
 	margin:5% 5% 6.5% 0;
 	height:30px;
 }
-
-#wordcloud h1{
-	text-align: center;
-	font-size: 2em;
-	font-family: 'Open sans', sans-serif;
-}
-
-#wordcloud h2{
-	text-align: center;
-	font-size: 1.7em;
-	font-family: 'Open sans', sans-serif;
-
+#verification{
+	height:20px;
 }
 
 
-
+#myCanvas{
+	padding-left:0;
+	padding-right: 0;
+	margin-left: auto;
+	margin-right: auto;
+	display: block;
+}
 
 

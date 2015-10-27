@@ -90,6 +90,7 @@ var lclStorageID = "";
                         question_queue: tempQuery
                     });
                 }
+            $('#verification').text('"' + question + '" has been added to ' + courseID).css({'color':'rgba(127,19,27,1)', 'position':'relative', 'top':'10px'});
 
            })
             
@@ -118,10 +119,9 @@ var lclStorageID = "";
     };
 
         
-        $(function(){
-            $('.save-element').on("click", function(event){
-                $('#courseID').val('');
-                $('#question').val('');
+                $(function(){
+            $('#get-btn').on("click", function(event){
+                $('#ID').val('');
 
                 //Byter ut input fält till paragraf med kursID
                 $('#ID').css({'display':'none'});
@@ -141,12 +141,13 @@ var lclStorageID = "";
             })
 
             $('#change-courseID').on('click', function(){
-                $('#courseID').css({'display':'block', 'margin-left':'6%'});
+                $('#ID').css({'display':'block', 'margin-left':'6%'});
                 $('#current-courseID').css({
                     'display':'none'
-                }).text('CourseID: ' + tempID);
+                }).text(tempID);
                 $('#change-courseID').css({'display':'none'});
                 $('#get-btn').css({'display':'block'});
+                $('#ID').val('');
                 $('.body-view-question p').remove();
                 $('.body-view-question button').remove();
             })
@@ -191,6 +192,44 @@ var lclStorageID = "";
                 }
                 
             })
+
+            $('.question-list').on('click', function(event){
+                $('nav div').removeClass('active');
+                $(this).addClass('active');
+                $('.box-view').css({'display':'block'})
+
+                $('.box-add').css({'display':'none'})
+                $('.box-new').css({'display':'none'})
+                //$('#get-btn').css({'display':'block'})
+
+
+            });
+
+            $('.add-to-cloud').on('click', function(event){
+                $('nav div').removeClass('active');
+                $(this).addClass('active');
+                $('.box-view').css({'display':'none'})
+                //$('#save-element').css({'display':'none'})
+                $('.box-new').css({'display':'none'})
+                $('.box-add').css({'display':'block'})
+                //$('.a-btn').css({'display':'block'})
+
+            });
+
+             $('.add-question').on('click', function(event){
+                $('nav div').removeClass('active');
+                $(this).addClass('active');
+                $('.box-view').css({'display':'none'})
+                //$('.a-btn').css({'display':'none'})
+                $('.box-add').css({'display':'none'})
+                $('.box-new').css({'display':'block'})
+                //$('#save-element').css({'display':'block'})
+
+            });
+
+             $('#save-element').on('click', function(event){
+
+             });
                       
         });
 
