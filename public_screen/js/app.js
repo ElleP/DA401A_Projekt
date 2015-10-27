@@ -11,7 +11,6 @@ var lclStorageID = "";
         //FirebaseController responsible for sending data to Firebase
 
         $scope.submitData = function(courseID, question){
-            alert("submitData");
             lclStorageID = courseID;
             $('.body-view-question li').remove();
             $('.body-view-question span').remove();
@@ -45,7 +44,6 @@ var lclStorageID = "";
 
     app.controller("LocalStorageController", function($scope){
         $scope.setID = function(courseID){
-            alert("setID");
             if (typeof(Storage) !== "undefined") {
                 localStorage.setItem("id", courseID);
                 console.log(localStorage.id);

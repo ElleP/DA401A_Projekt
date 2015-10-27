@@ -8,34 +8,37 @@ var courseID = localStorage.id;
 	    var active = new Firebase("https://instantify.firebaseio.com/" + courseID).child('active_question');
 	    var ref = new Firebase("https://instantify.firebaseio.com/" + courseID + "/answers");
 
+		this.identifier = courseID;
+
 		this.getData = function(){
 
-		console.log("Function call: getData");
-			
-		var myList = new Array();
+			console.log("Function call: getData");
 
-		ref.once("value", function(snapshot) {
-		  			
-			snapshot.forEach(function(childSnapshot) {
+			var myList = new Array();
 
-			    myList.push(childSnapshot.val());
+			ref.once("value", function(snapshot) {
+			  			
+				snapshot.forEach(function(childSnapshot) {
 
-			});
+				    myList.push(childSnapshot.val());
+				});
 
-			console.log("generating cloud... ");
+				console.log("generating cloud... ");
 
-			console.log("cloud data: " + myList.length);
+				console.log("cloud data: " + myList.length);
 
-			var formattedList = [];
-			formattedList = formatList(myList);
+				var formattedList = [];
+				formattedList = formatList(myList);
 
-			WordCloud(document.getElementById('myCanvas'), { list: formattedList } );
-			});
+				obj = {
+					list:formattedList
+  				}
+
+				WordCloud(document.getElementById('myCanvas'), obj);
+				});
 		};
 
 		var formatList = function(data){
-
-
 			var temp = data.indexOf("xx");
 			data.pop(temp);
 

@@ -17,15 +17,14 @@
 
 
 	</head>
-
 		<body>
-			<div>
+			<div ng-controller="CloudController as ctrl">
 				<h1> Is this a good question? </h1>
-				<h2> ID:XXX</h2>
+				<h2>{{ctrl.identifier}}</h2>
 			</div>
-			<div ng-controller="CloudController as Mrg">
-				<input type="button" value="Generate Word Cloud" ng-click="Mrg.getData()"></input>
+			<div ng-controller="CloudController as mgr">
+				<input type="button" value="Generate Word Cloud" ng-click="mgr.getData()"></input>
 			</div>
-			<canvas id="myCanvas" width="800" height="800"></canvas>
+			<canvas id="myCanvas"></canvas>
 		</body>
 </html>
