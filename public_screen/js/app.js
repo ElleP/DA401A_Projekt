@@ -103,25 +103,25 @@ var lclStorageID = "";
 
             var active_question;
 
-            active.once("value", function(data) {
-                active_question = data.val();
-            });
+            
+            
 
 
             ref.on('child_added', function(snapshot) {
-                if(snapshot.val() == active_question){
-                    $('.questions').append('<li id="active" data-value="' + snapshot.key() + '">' +  active_question + '</li><span class="icons"><i class="fa fa-trash-o"></i><i class="fa fa-check-square-o"></i></span><hr>');
-                }
-                else{
-                    $('.questions').append('<li class="question" id="delete" data-value="' + snapshot.key() + '">' +  snapshot.val() + '</li><span class="icons"><i class="fa fa-trash-o"></i><i class="fa fa-square-o"></i></span><hr>');
-                }
- 
+                active.once("value", function(data) {
+                    active_question = data.val();
+                    if(snapshot.val() == active_question){
+                        $('.questions').append('<li id="active" data-value="' + snapshot.key() + '">' +  active_question + '</li><span class="icons"><i class="fa fa-trash-o"></i><i class="fa fa-check-square-o"></i></span><hr>');
+                    }
+                    else{
+                        $('.questions').append('<li class="question" id="delete" data-value="' + snapshot.key() + '">' +  snapshot.val() + '</li><span class="icons"><i class="fa fa-trash-o"></i><i class="fa fa-square-o"></i></span><hr>');
+                    }
+                });
             });
         };
 
        $(function(){
-            /*$('#get-btn').on("click", function(event){
-                tempID = $('#ID').val();
+        $('#get-btn').on("click", function(event){
                 $('#ID').val('');
 
                 //Byter ut input fält till paragraf med kursID
@@ -131,24 +131,26 @@ var lclStorageID = "";
                     }).text(tempID);
                 $('#change-courseID').css({'display':'block'});
                 $('#get-btn').css({'display':'none'});
-                event.stopPropagation();
             });
-*/
 
-   /* $('#change-courseID').on('click', function(){
+
+    $('#change-courseID').on('click', function(){
         $('.body-view-question li').remove();
         $('.body-view-question span').remove();
         $('.body-view-question hr').remove();
-        $('#ID').css({'display':'block', 'margin-left':'6%'});
+
+
+        $('#ID').css({'display':'block'});
         $('#current-courseID').css({
             'display':'none'
-        }).text(tempID);
+        })
         $('#change-courseID').css({'display':'none'});
         $('#get-btn').css({'display':'block'});
+        $('#ID').css({'display':'block'});
         $('#ID').val('');
-        $('.body-view-question p').remove();
-        $('.body-view-question button').remove();
-    })*/
+        $('.body-view-question p').css({'display':'none'})
+        $('.body-view-question button').css({'display':'none'})
+    })
 
     
 
