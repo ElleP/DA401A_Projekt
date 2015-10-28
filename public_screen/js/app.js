@@ -91,7 +91,7 @@ var lclStorageID = "";
                     });
                 }
             $('#verification').text('Frågan "' + question + '" has been added to ' + courseID).css({'color':'rgba(127,19,27,1)', 'position':'relative', 'top':'10px'});
-
+            //$('#verification').prepend('<i class="fa fa-check"></i>');
            })
             
         }
