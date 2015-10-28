@@ -101,20 +101,14 @@ var lclStorageID = "";
             var active = new Firebase("https://instantify.firebaseio.com/" + courseID).child('active_question');
             var ref = new Firebase("https://instantify.firebaseio.com/" + courseID + "/question_queue");
 
-            var active_question;
-
-            
-            
-
-
             ref.on('child_added', function(snapshot) {
                 active.once("value", function(data) {
                     active_question = data.val();
                     if(snapshot.val() == active_question){
-                        $('.questions').append('<li id="active" data-value="' + snapshot.key() + '">' +  active_question + '</li><span class="icons"><i class="fa fa-trash-o"></i><i class="fa fa-check-square-o"></i></span><hr>');
+                        $('.questions').prepend('<li id="active" data-value="' + snapshot.key() + '">' +  active_question + '</li><span class="icons"><i class="fa fa-trash-o"></i><i class="fa fa-check-square-o"></i></span><hr>');
                     }
                     else{
-                        $('.questions').append('<li class="question" id="delete" data-value="' + snapshot.key() + '">' +  snapshot.val() + '</li><span class="icons"><i class="fa fa-trash-o"></i><i class="fa fa-square-o"></i></span><hr>');
+                        $('.questions').prepend('<li class="question" id="delete" data-value="' + snapshot.key() + '">' +  snapshot.val() + '</li><span class="icons"><i class="fa fa-trash-o"></i><i class="fa fa-square-o"></i></span><hr>');
                     }
                 });
             });
@@ -187,6 +181,7 @@ var lclStorageID = "";
     })
 
     $('.question-list').on('click', function(){
+
         $('nav div').removeClass('active');
         $(this).addClass('active');
         $('.box-view').css({'display':'block'})
@@ -199,7 +194,9 @@ var lclStorageID = "";
     })
 
     $('.add-to-cloud').on('click', function(){
-            $('nav div').removeClass('active');
+        //$('.questions').remove();
+        //$('.body-view-question').append('<div class="questions"></div>')
+        $('nav div').removeClass('active');
         $(this).addClass('active');
         $('.box-view').css({'display':'none'})
         //$('#save-element').css({'display':'none'})
@@ -212,6 +209,8 @@ var lclStorageID = "";
         
 
     $('.add-question').on('click', function(){
+        //$('.questions').remove();
+        //$('.body-view-question').append('<div class="questions"></div>')
         $('nav div').removeClass('active');
         $(this).addClass('active');
         $('.box-view').css({'display':'none'})
