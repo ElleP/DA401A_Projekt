@@ -74,7 +74,7 @@
 											<input ng-model="courseID" id="courseID" type="text" placeholder={{Ctrl.msgID}}></input>
 											<input ng-model="question" id="question" type="text" placeholder={{Ctrl.msgInput}}></input>
 			
-											<a href="wordcloud.html" target="_blank" class="a-btn" type="button" ng-click="submitData(courseID, question); setID(courseID);">{{Ctrl.btnSubmit}} WordCloud</a>
+											<a href="wordcloud.html" target="_blank" class="a-btn" type="button" ng-click="submitData(courseID, question); setID(courseID); $event.stopPropagation();">{{Ctrl.btnSubmit}} WordCloud</a>
 
 										</form>
 									</div><!--End of .body-queestion-->
@@ -94,7 +94,7 @@
 											<input ng-model="ID" id="courseID" type="text" placeholder={{Ctrl.msgID}}></input>
 											<input ng-model="question" id="question" type="text" placeholder={{Ctrl.msgInput}}></input>
 											<p id="verification"><p>
-											<input ng-controller="SaveController" type="button" id="save-element" class="save-element" ng-click="saveData(ID, question);getListData(courseID);$event.stopPropagnation;" value={{Ctrl.btnSave}}></input>
+											<input ng-controller="SaveController" type="button" id="save-element" class="save-element" ng-click="saveData(ID, question);$event.stopPropagation();" value={{Ctrl.btnSave}}></input>
 										</form>
 
 									</div><!--End of .body-queestion-->
@@ -108,11 +108,11 @@
 							</div>
 							<div id="row" >
 								<div class="col-md-10 col-md-offset-1">
-									<div class="body-view-question" ng-controller="SaveController">
+									<div class="body-view-question">
 										<p id="current-courseID"></p>
 	                					<button id="change-courseID">Change courseID</button>
 										<input ng-model="cID" id="ID" type="text" placeholder={{Ctrl.msgID}}></input>
-										<input ng-controller="SaveController" type="button" id="get-btn" class="save-element" ng-click="getListData(cID)" value="Get"></input>						
+										<input type="button" id="get-btn" class="save-element" ng-click="getListData(cID); $event.stopPropagation();" value="Get"></input>						
 										<div class="questions"></div>
 									</div>
 								</div>
