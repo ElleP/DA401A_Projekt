@@ -181,7 +181,7 @@ var lclStorageID = "";
     })
 
     $('.question-list').on('click', function(){
-
+        $('.header-question h2').text('View saved questions for an ID');
         $('nav div').removeClass('active');
         $(this).addClass('active');
         $('.box-view').css({'display':'block'})
@@ -194,6 +194,7 @@ var lclStorageID = "";
     })
 
     $('.add-to-cloud').on('click', function(){
+        $('.header-question h2').text('Start a WordCloud instantly - just add a question');
         //$('.questions').remove();
         //$('.body-view-question').append('<div class="questions"></div>')
         $('nav div').removeClass('active');
@@ -209,6 +210,7 @@ var lclStorageID = "";
         
 
     $('.add-question').on('click', function(){
+        $('.header-question h2').text('Save questions to ID');
         //$('.questions').remove();
         //$('.body-view-question').append('<div class="questions"></div>')
         $('nav div').removeClass('active');
