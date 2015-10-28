@@ -140,7 +140,7 @@ var lclStorageID = "";
         })
         $('#change-courseID').css({'display':'none'});
         $('#get-btn').css({'display':'block'});
-        $('#ID').css({'display':'block'});
+        $('#ID').css({'display':'inline-block'});
         $('#ID').val('');
         $('.body-view-question p').css({'display':'none'})
         $('.body-view-question button').css({'display':'none'})

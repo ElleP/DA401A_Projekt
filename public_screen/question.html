@@ -104,14 +104,14 @@
 		
 						<div class="box-view" style="display:none" ng-controller="SaveController">
 							<div class="header-view-question">
-								<h2>Input ID to view your saved questions</h2>
+								<h2>View saved questions for an ID</h2>
 							</div>
 							<div id="row" >
 								<div class="col-md-10 col-md-offset-1">
 									<div class="body-view-question">
-										<p id="current-courseID"></p>
+										<p id="current-courseID">You are currently viewing ID: </p>
 	                					<button id="change-courseID">Change courseID</button>
-										<input ng-model="cID" id="ID" type="text" placeholder={{Ctrl.msgID}}></input>
+										<input ng-model="cID" id="ID" type="text" placeholder="Write ID to get saved questions"></input>
 										<input type="button" id="get-btn" class="save-element" ng-click="getListData(cID); $event.stopPropagation();" value="Get"></input>						
 										<div class="questions"></div>
 									</div>
