@@ -76,6 +76,7 @@ var lclStorageID = "";
             var pushpushRef = pushRef.push();
                 if(isChild){
                     if (setActive){
+                        $("i[class*='fa-play-circle']").remove();
                         $(".questions i[class*='fa-check-square-o']").addClass('fa-square-o').removeClass('fa-check-square-o');
                         ref.child(courseID).update({'active_question' : question});
                         pushpushRef.set(question);
@@ -115,7 +116,7 @@ var lclStorageID = "";
                 active.once("value", function(data) {
                     active_question = data.val();
                     if(snapshot.val() == active_question){
-                        $('.questions').prepend('<li id="active" data-value="' + snapshot.key() + '">' +  active_question + '</li><span class="icons"><i class="fa fa-trash-o"></i><i class="fa fa-check-square-o"></i></span><hr>');
+                        $('.questions').prepend('<li id="active" data-value="' + snapshot.key() + '">' +  active_question + '</li></i><span class="icons"><i class="fa fa-play-circle fa-2x"></i><i class="fa fa-trash-o"></i><i class="fa fa-check-square-o"></i></span><hr>');
                     }
                     else{
                         $('.questions').prepend('<li class="question" id="delete" data-value="' + snapshot.key() + '">' +  snapshot.val() + '</li><span class="icons"><i class="fa fa-trash-o"></i><i class="fa fa-square-o"></i></span><hr>');
@@ -164,8 +165,10 @@ var lclStorageID = "";
             $('.body-view-question li').addClass('question');
             $('.body-view-question li').removeAttr('id');
             $(this).parent().prev().removeClass('question').attr('id','active');
+            $("i[class*='fa-play-circle']").remove();
             $("i[class*='fa-check-square-o']").addClass('fa-square-o').removeClass('fa-check-square-o');
             //$('.questions').find('<i class="fa fa-check-square-o">').remove();
+            $(this).parent().append('<i class="fa fa-play-circle fa-2x"></i>');
             $(this).parent().append('<i class="fa fa-check-square-o"></i>');
             $(this).remove();
             var ref = new Firebase("https://instantify.firebaseio.com/" + tempID);
