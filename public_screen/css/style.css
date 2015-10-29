@@ -139,6 +139,7 @@ form input[type=text]:first-child{
 }
 
 form input[type=button], #get-btn, .a-btn, #save-element{
+	text-align: center;
 	font-family: 'Muli', sans-serif;
 	font-weight: 300;
 	margin:7% 5% 3% 0%;
@@ -150,6 +151,11 @@ form input[type=button], #get-btn, .a-btn, #save-element{
 	font-size: 1.15em;
 	border:none;
 	float:right;
+}
+
+input[type=checkbox]{
+	margin-top: 5% !important;
+	margin-right: 3%!important;
 }
 
 #save-element{
@@ -231,6 +237,10 @@ form input[type=button], #get-btn, .a-btn, #save-element{
     margin: auto;
 }
 
+.body-question{
+	text-align: left;
+}
+
 .body-view-question li:first-child{
 	margin-top:5%;
 }
@@ -283,7 +293,10 @@ input:focus::-webkit-input-placeholder {
 	height:30px;
 }
 #verification{
-	height:20px;
+	color: rgb(127, 19, 27);
+    position: relative;
+    top: -220px !important;
+    text-align: center;
 }
 
 #myCanvas{

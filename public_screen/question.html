@@ -92,9 +92,11 @@
 										
 										<form>
 											<input ng-model="ID" id="courseID" type="text" placeholder={{Ctrl.msgID}}></input>
-											<input ng-model="question" id="question" type="text" placeholder={{Ctrl.msgInput}}></input>
+											<input ng-model="question" id="question" type="text" placeholder={{Ctrl.msgInput}}></input><br>
+											<input type="checkbox" ng-true-value="'true'" ng-false-value="'false'" ng-model="setActive" name="setActive" value="Active">Set as active question</input>
+
 											<p id="verification"><p>
-											<input ng-controller="SaveController" type="button" id="save-element" class="save-element" ng-click="saveData(ID, question);$event.stopPropagation();" value={{Ctrl.btnSave}}></input>
+											<input ng-controller="SaveController" type="button" id="save-element" class="save-element" ng-click="saveData(ID, question, setActive);$event.stopPropagation();" value={{Ctrl.btnSave}}></input>
 										</form>
 
 									</div><!--End of .body-queestion-->
