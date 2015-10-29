@@ -16,15 +16,21 @@
 		<script type="text/javascript" src="js/wordcloud2.js-master/src/wordcloud2.js"></script>
 		<script type="text/javascript" src="js/WordCloudManager.js"></script>
 
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+		<script type="text/javascript" src="js/script.js"></script>
+
 	</head>
-		<body>
-			<div id="wordcloud" ng-controller="CloudController as ctrl">
-				<h1> {{ctrl.identifier}}</h1>
-				<h2> Fråga: </h2>
-			</div>
-			<div ng-controller="CloudController as mgr">
-				<input type="button" value="Generate Word Cloud" ng-click="mgr.getData()"></input>
-			</div>
-			<canvas id="myCanvas" width="1200" height="690"></canvas>
-		</body>
+	<body>
+		<header>
+			<img src="img/instantify_ver3.png" alt="Logo">
+		</header>
+		<div id="wordcloud" ng-controller="CloudController as ctrl">
+			<h1></h1>
+			<h2></h2>
+		</div>
+		<div ng-controller="CloudController as mgr">
+			<input type="button" value="Generate Word Cloud" ng-click="mgr.getData()"></input>
+		</div>
+		<canvas id="myCanvas" width="1200" height="690"></canvas>
+	</body>
 </html>

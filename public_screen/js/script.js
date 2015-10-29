@@ -1,13 +1,12 @@
 $(document).ready(function(){
 
-
-
-    /*$('#question-list').click(function(){
-    	id = localStorage.id;
-    	$('.header-view-question').addClass('ng-click="getListData(' + id + ')')
-    })*/
+	$('#wordcloud h1').text(localStorage.id);
+	$('#wordcloud h2').text(localStorage.question);
               
-})
+});
+
+
+
 
 
 

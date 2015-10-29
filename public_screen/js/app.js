@@ -43,10 +43,10 @@ var lclStorageID = "";
     });   
 
     app.controller("LocalStorageController", function($scope){
-        $scope.setID = function(courseID){
+        $scope.setID = function(courseID, question){
             if (typeof(Storage) !== "undefined") {
                 localStorage.setItem("id", courseID);
-                console.log(localStorage.id);
+                localStorage.setItem("question", question);
             }
             else{ 
                 document.getElementById("result").innerHTML = "Sorry, your browser does not support Web"
@@ -116,7 +116,7 @@ var lclStorageID = "";
                 active.once("value", function(data) {
                     active_question = data.val();
                     if(snapshot.val() == active_question){
-                        $('.questions').prepend('<li id="active" data-value="' + snapshot.key() + '">' +  active_question + '</li></i><span class="icons"><i class="fa fa-play-circle fa-2x"></i><i class="fa fa-trash-o"></i><i class="fa fa-check-square-o"></i></span><hr>');
+                        $('.questions').prepend('<li id="active" data-value="' + snapshot.key() + '">' +  active_question + '</li></i><span class="icons"><a href="wordcloud.html" target="_blank"><i class="fa fa-play-circle fa-2x"></i></a><i class="fa fa-trash-o"></i><i class="fa fa-check-square-o"></i></span><hr>');
                     }
                     else{
                         $('.questions').prepend('<li class="question" id="delete" data-value="' + snapshot.key() + '">' +  snapshot.val() + '</li><span class="icons"><i class="fa fa-trash-o"></i><i class="fa fa-square-o"></i></span><hr>');
@@ -193,7 +193,19 @@ var lclStorageID = "";
         
     })
 
+        $('.body-view-question').off('click').on('click', '.fa-play-circle', function(event){
+
+        var question = $(this).parent().parent().prev().text();
+        var id = $('#current-courseID').text();
+    
+        localStorage.setItem('question', question);
+        localStorage.setItem('id', id);
+        //event.stopPropagation();
+        
+    })
+
     $('.question-list').on('click', function(){
+        localStorage.clear();
         $('#verification').empty();
         $('.header-question h2').text('View saved questions for an ID');
         $('nav div').removeClass('active');
@@ -208,6 +220,7 @@ var lclStorageID = "";
     })
 
     $('.add-to-cloud').on('click', function(){
+        localStorage.clear();
         $('#verification').empty();
         $('.header-question h2').text('Start a WordCloud instantly - just add a question');
         //$('.questions').remove();

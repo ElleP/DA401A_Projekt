@@ -25,7 +25,7 @@
     <!--Fontawesome-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 
-    <script src="js/script.js" type="text/javascript"></script></script>
+    <!--<script src="js/script.js" type="text/javascript"></script></script>-->
 </head>
 <body>
 	<header>
@@ -74,7 +74,7 @@
 											<input ng-model="courseID" id="courseID" type="text" placeholder={{Ctrl.msgID}}></input>
 											<input ng-model="question" id="question" type="text" placeholder={{Ctrl.msgInput}}></input>
 			
-											<a href="wordcloud.html" target="_blank" class="a-btn" type="button" ng-click="submitData(courseID, question); setID(courseID); $event.stopPropagation();">{{Ctrl.btnSubmit}} WordCloud</a>
+											<a href="wordcloud.html" target="_blank" class="a-btn" type="button" ng-click="submitData(courseID, question); setID(courseID, question); $event.stopPropagation();">{{Ctrl.btnSubmit}} WordCloud</a>
 
 										</form>
 									</div><!--End of .body-queestion-->
