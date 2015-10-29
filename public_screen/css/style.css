@@ -377,5 +377,9 @@ input:focus::-webkit-input-placeholder {
 	margin:20% 5%;
 }
 
+#save-canvas{
+	display:none;
+}
+
 
 

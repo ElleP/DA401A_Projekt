@@ -25,11 +25,12 @@ $(document).ready(function(){
 
 
 function downloadCanvas() {
-	filename = 'cloud.png';
+	filename = localStorage.id + '.png';
     link = document.getElementById('save-canvas');
 
     link.href = document.getElementById('myCanvas').toDataURL();
     link.download = filename;
+    $('#save-canvas').css({'display':'block'});
 }
 
 
