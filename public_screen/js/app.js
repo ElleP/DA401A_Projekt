@@ -257,7 +257,7 @@ var lclStorageID = "";
         $('input[type=text]').val('');
     })
 
-       })
+    })
         
 
     }) 

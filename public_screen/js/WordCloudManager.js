@@ -27,19 +27,22 @@ var courseID = localStorage.id;
 				obj = {
 					list:formattedList, 
 					gridSize: 16,
-  					weightFactor: 40,
+  					weightFactor: 30,
 					/*
 					gridSize: Math.round(16 * canvas.width / 1024),
   					weightFactor: function (size) {
     				return Math.pow(size, 2.8) * canvas.width / 1024;
   					},*/
   					fontFamily: 'Times, serif',
-  					color: function (word, weight) {
-    				return (weight === 12) ? '#f02222' : '#c09292';
+  					wordColor: function (word, weight) {
+    				return (weight === 12) ? '#000000' : '#5D0007' ;
   					},
-  					rotateRatio: 0.5,
-  					backgroundColor: '#ffe0e0'
+  					rotateRatio: 1,
+  					wait:500
+  					//shape: 'star'
+  					//backgroundColor: '#ffe0e0'
   				}
+
 				WordCloud(document.getElementById('myCanvas'), obj);
 			});
 		};
