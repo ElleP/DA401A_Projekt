@@ -73,8 +73,8 @@
 										<form ng-controller="LocalStorageController">
 											<input ng-model="courseID" id="courseID" type="text" placeholder={{Ctrl.msgID}}></input>
 											<input ng-model="question" id="question" type="text" placeholder={{Ctrl.msgInput}}></input>
-			
-											<a href="wordcloud.html" target="_blank" class="a-btn" type="button" ng-click="submitData(courseID, question); setID(courseID, question); $event.stopPropagation();">{{Ctrl.btnSubmit}} WordCloud</a>
+											<!--class a-btn replaced by button class-->
+											<a href="wordcloud.html" target="_blank" class="button" type="button" ng-click="submitData(courseID, question); setID(courseID, question); $event.stopPropagation();"><span>&#9658;</span>{{Ctrl.btnSubmit}} WordCloud</a>
 
 										</form>
 									</div><!--End of .body-queestion-->
