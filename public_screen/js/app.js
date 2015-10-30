@@ -165,10 +165,11 @@ var lclStorageID = "";
             $('.body-view-question li').addClass('question');
             $('.body-view-question li').removeAttr('id');
             $(this).parent().prev().removeClass('question').attr('id','active');
+            $('.questions a').remove();
             $("i[class*='fa-play-circle']").remove();
             $("i[class*='fa-check-square-o']").addClass('fa-square-o').removeClass('fa-check-square-o');
             //$('.questions').find('<i class="fa fa-check-square-o">').remove();
-            $(this).parent().append('<i class="fa fa-play-circle fa-2x"></i>');
+            $(this).parent().append('<a href="wordcloud.html" target="_blank"><i class="fa fa-play-circle fa-2x"></i></a>');
             $(this).parent().append('<i class="fa fa-check-square-o"></i>');
             $(this).remove();
             var ref = new Firebase("https://instantify.firebaseio.com/" + tempID);
@@ -176,7 +177,7 @@ var lclStorageID = "";
         }
     })
 
-    $('.body-view-question').on('click', '.fa-trash-o', function(event){
+    $('.questions').on('click', '.fa-trash-o', function(event){
         var data_value = $(this).parent().prev().data('value');
         if ($(this).parent().prev().attr('id') == 'active'){
             alert("Can't delete active question");
@@ -193,8 +194,8 @@ var lclStorageID = "";
         
     })
 
-        $('.body-view-question').off('click').on('click', '.fa-play-circle', function(event){
-
+        $('.body-view-question').on('click', '.fa-play-circle', function(event){
+        alert('clicked');
         var question = $(this).parent().parent().prev().text();
         var id = $('#current-courseID').text();
     
