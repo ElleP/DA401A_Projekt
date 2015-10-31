@@ -27,7 +27,7 @@ var courseID = localStorage.id;
 				obj = {
 					list:formattedList, 
 					gridSize: 16,
-  					weightFactor: 30,
+  					weightFactor: 35,
 					/*
 					gridSize: Math.round(16 * canvas.width / 1024),
   					weightFactor: function (size) {
@@ -38,7 +38,7 @@ var courseID = localStorage.id;
     				return (weight === 12) ? '#000000' : '#5D0007' ;
   					},
   					rotateRatio: 1,
-  					wait:500
+  					wait:Math.floor(Math.random() * 1000)
   					//shape: 'star'
   					//backgroundColor: '#ffe0e0'
   				}
@@ -50,8 +50,6 @@ var courseID = localStorage.id;
 		var formatList = function(data){
 			var temp = data.indexOf("xx");
 			data.pop(temp);
-
-			console.log(data);
 
 			var a = [], b = [], prev;
     

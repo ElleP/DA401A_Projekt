@@ -20,7 +20,7 @@ $(document).ready(function(){
 	  setTimeout(downloadCanvas,5000);
 
 	});
-              
+         
 });
 
 
