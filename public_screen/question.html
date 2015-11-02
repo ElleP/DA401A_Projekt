@@ -95,8 +95,8 @@
 											<input ng-model="question" id="question" type="text" placeholder={{Ctrl.msgInput}}></input><br>
 											<input type="checkbox" ng-true-value="'true'" ng-false-value="'false'" ng-model="setActive" name="setActive" value="Active">Set as active question</input>
 
-											<p id="verification"><p>
-											<input ng-controller="SaveController" type="button" id="save-element" class="save-element" ng-click="saveData(ID, question, setActive);$event.stopPropagation();" value={{Ctrl.btnSave}}></input>
+											<p id="verification"></p>
+											<a ng-controller="SaveController" type="button" id="save-element" class="save-element button" ng-click="saveData(ID, question, setActive);$event.stopPropagation();" value={{Ctrl.btnSave}}><span><i class="fa fa-plus"></i></span>Save question</a>
 										</form>
 
 									</div><!--End of .body-queestion-->
@@ -114,7 +114,7 @@
 										<p id="current-courseID">You are currently viewing ID: </p>
 	                					<button id="change-courseID">Change courseID</button>
 										<input ng-model="cID" id="ID" type="text" placeholder="Write ID to get saved questions"></input>
-										<input type="button" id="get-btn" class="save-element" ng-click="getListData(cID); $event.stopPropagation();" value="Get"></input>						
+										<a type="button" id="get-btn" class="save-element button" ng-click="getListData(cID); $event.stopPropagation();" value="Get"><span><i class="fa fa-arrow-down"></i></span>Get questions</a>						
 										<div class="questions"></div>
 									</div>
 								</div>

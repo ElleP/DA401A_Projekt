@@ -141,7 +141,7 @@ form input[type=text]:first-child{
 	margin: 5% 0 5% 0%;
 }
 
-form input[type=button], #get-btn, .a-btn, #save-element{
+/*form input[type=button], #get-btn, .a-btn, #save-element{
 	text-align: center;
 	font-family: 'Muli', sans-serif;
 	font-weight: 300;
@@ -154,17 +154,17 @@ form input[type=button], #get-btn, .a-btn, #save-element{
 	font-size: 1.15em;
 	border:none;
 	float:right;
-}
+}*/
 
 input[type=checkbox]{
 	margin-top: 5% !important;
 	margin-right: 3%!important;
 	margin-left:5%!important;
 }
-
+/*
 #save-element{
 	margin-top: 3.6%!important;
-}
+}*/
 
 /*#get-btn{
 	font-family: 'Muli', sans-serif;
@@ -459,7 +459,7 @@ border-right: 1px solid  rgba(0,0,0,0.15);
 
 .button:hover{
 	text-align: center;
-	width:255px;
+	width:265px;
 }
 
 .button:active, .button:focus, .button:visited {
