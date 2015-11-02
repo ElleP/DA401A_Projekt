@@ -12,6 +12,7 @@ var lclStorageID = "";
         //FirebaseController responsible for sending data to Firebase
 
         $scope.submitData = function(courseID, question){
+            alert("submitData");
             lclStorageID = courseID;
             /*$('.body-view-question li').remove();
             $('.body-view-question span').remove();
@@ -20,14 +21,18 @@ var lclStorageID = "";
             var active_question = ref.child(courseID);
             ref.once("value", function(snapshot) {
                 var isChild = snapshot.hasChild(courseID);
-                var pushRef = ref.child(courseID).child('question_queue');
-                var pushpushRef = pushRef.push();
+                var q_Queue = ref.child(courseID).child('question_queue');
+                var new_Question = q_Queue.push();
+                var answers= ref.child(courseID).child('answers');
                 if(isChild){
+                    alert("Set Active");
                     active_question.update({"active_question" : question});
-                    pushpushRef.set(question);
+                    new_Question.set(question);
+                    answers.set({'XX':'xx'});
                 }
                 else{
-                    var postID = pushpushRef.key();
+                    alert("new question");
+                    var postID = new_Question.key();
                     var dataTable = ref.child(courseID);
                     var tempQuery = {};
                     tempQuery[postID] = question;
@@ -54,6 +59,8 @@ var lclStorageID = "";
             }
         };        
 
+
+        //Had problems setting a new controller in the html so just put this method here - sorry 'bout it!'
         $scope.isValid = function(courseID, question){
 
             if(courseID == undefined || question == undefined){
@@ -83,27 +90,39 @@ var lclStorageID = "";
 
         $scope.saveData = function(courseID, question, setActive){
 
+            alert("saveData");
             tempID = courseID;
             //tempQuestionList.push(question);
             var ref = new Firebase("https://instantify.firebaseio.com/");
             //var pushRef = ref.child('question_queue');
             ref.once("value", function(snapshot) {
             var isChild = snapshot.hasChild(courseID);
-            var pushRef = ref.child(courseID).child('question_queue');
-            var pushpushRef = pushRef.push();
+//I CHANGED PUSHREF TO Q_QUEUE AS I THINK THIS IS WHAT THAT WAS SUPPOSED TO REPRESENT
+            var q_Queue = ref.child(courseID).child('question_queue');
+//I CHANGED 'PUSHPUSHREF' TO NEW_QUESTION AS I THINK THIS IS WHAT THAT WAS SUPPOSED TO REPRESENT
+            var new_Question = q_Queue.push(); 
+            var answers= ref.child(courseID).child('answers');
+
                 if(isChild){
+//I THINK THIS MEANS IS SETACTIVE EXISTS?
                     if (setActive){
                         $("i[class*='fa-play-circle']").remove();
                         $(".questions i[class*='fa-check-square-o']").addClass('fa-square-o').removeClass('fa-check-square-o');
                         ref.child(courseID).update({'active_question' : question});
-                        pushpushRef.set(question);
+                        new_Question.set(question);
+
+//THIS IS WHERE I THINK I SHOULD SET ANSWERS TO NULL
+                        answers.set({'XX':'xx'}); //reset Answers
+
                     }
                     else{
-                        pushpushRef.set(question);
+                        alert("Set New Question");
+                        new_Question.set(question);
                     }
                 }
                 else{
-                    var postID = pushpushRef.key();
+                    alert("Else");
+                    var postID = new_Question.key();
                     var dataTable = ref.child(courseID);
                     var tempQuery = {};
                     tempQuery[postID] = question;
@@ -121,17 +140,19 @@ var lclStorageID = "";
             $('input[type=checkbox]').attr('checked',false);
 
            })
-            
         }
 
         $scope.getListData = function(courseID){
             tempID = courseID;
             var active = new Firebase("https://instantify.firebaseio.com/" + courseID).child('active_question');
             var ref = new Firebase("https://instantify.firebaseio.com/" + courseID + "/question_queue");
+            var answers= ref.child(courseID).child('answers');
 
             ref.on('child_added', function(snapshot) {
                 active.once("value", function(data) {
-                    active_question = data.val();
+                    active_question = data.val(); 
+//THIS IS WHERE I THINK I SHOULD SET ANSWERS TO NULL
+                    answers.set({'answers':'xx'}); //Reset Answers
                     if(snapshot.val() == active_question){
                         $('.questions').prepend('<li id="active" data-value="' + snapshot.key() + '">' +  active_question + '</li></i><span class="icons"><a href="wordcloud.html" target="_blank"><i class="fa fa-play-circle fa-2x"></i></a><i class="fa fa-trash-o"></i><i class="fa fa-check-square-o"></i></span><hr>');
                     }
