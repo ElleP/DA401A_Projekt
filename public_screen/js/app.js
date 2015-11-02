@@ -7,6 +7,7 @@ var tempIDList = [];
 index = 0;    
 var lclStorageID = "";
 
+
     app.controller('FirebaseController', function($scope){
         //FirebaseController responsible for sending data to Firebase
 
@@ -52,6 +53,22 @@ var lclStorageID = "";
                 document.getElementById("result").innerHTML = "Sorry, your browser does not support Web"
             }
         };        
+
+        $scope.isValid = function(courseID, question){
+
+            if(courseID == undefined || question == undefined){
+                console.log(courseID, question);
+                console.log("false");
+                return true;
+            }
+            
+            else{
+                console.log(courseID, question);
+                console.log("true");
+                // $(".button").attr("ng-show", "isValid()");   
+                return false;
+            } 
+        }
     });
 
     app.controller('MessageController', function($scope){

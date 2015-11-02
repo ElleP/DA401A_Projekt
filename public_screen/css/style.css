@@ -98,6 +98,15 @@ nav a{
 	text-align: center;
 	margin:auto;
 }
+/*Styling for angular validation*/
+.ng-invalid.ng-dirty{
+  border-color:red
+}
+
+/*Styling for angular validation*/
+.ng-valid.ng-dirty{
+  border-color:green
+}
 
 .header-question h2{
 	font-family: 'Muli', sans-serif;
