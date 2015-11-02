@@ -33,7 +33,7 @@ var courseID = localStorage.id;
   					weightFactor: function (size) {
     				return Math.pow(size, 2.8) * canvas.width / 1024;
   					},*/
-  					fontFamily: 'Times, serif',
+  					fontFamily: 'Muli, sans-serif',
   					wordColor: function (word, weight) {
     				return (weight === 12) ? '#000000' : '#5D0007' ;
   					},
