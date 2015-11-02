@@ -28,6 +28,7 @@ var lclStorageID = "";
                     alert("Set Active");
                     active_question.update({"active_question" : question});
                     new_Question.set(question);
+//THIS IS WHERE I TRY TO RESET ANSWERS
                     answers.set({'XX':'xx'});
                 }
                 else{
