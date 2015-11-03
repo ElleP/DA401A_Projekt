@@ -19,19 +19,22 @@ var lclStorageID = "";
             $('.body-view-question hr').remove();*/
             var ref = new Firebase("https://instantify.firebaseio.com");
             var active_question = ref.child(courseID);
+            var answer = ref.child(courseID).child('answers');
             ref.once("value", function(snapshot) {
                 var isChild = snapshot.hasChild(courseID);
                 var q_Queue = ref.child(courseID).child('question_queue');
                 var new_Question = q_Queue.push();
-                var answers= ref.child(courseID).child('answers');
+                
                 if(isChild){
-                    alert("Set Active");
+
+    //THIS IS WHERE I TRY TO RESET ANSWERS
+
+                    answer.set({'testkey':'XX'});
                     $("i[class*='fa-play-circle']").remove();
                     $(".questions i[class*='fa-check-square-o']").addClass('fa-square-o').removeClass('fa-check-square-o');
                     active_question.update({"active_question" : question});
                     new_Question.set(question);
-//THIS IS WHERE I TRY TO RESET ANSWERS
-                    answers.set({'XX':'xx'});
+                    
                 }
                 else{
                     alert("new question");
