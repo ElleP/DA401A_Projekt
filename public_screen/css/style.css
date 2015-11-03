@@ -376,6 +376,17 @@ input:focus::-webkit-input-placeholder {
 	transition: all .5s ease;
 }
 
+.btn{
+	float:right;
+	margin-top: 5%;
+	margin-right: 5%;
+	background-color: #ccc;
+}
+
+#save-element{
+	margin-top: 0 !important;
+}
+
 .button span {
 	position: absolute;
 	left: 0;

@@ -14,7 +14,7 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     
-        <!--Angular-->
+    <!--Angular-->
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
     <script src="https://cdn.firebase.com/libs/angularfire/1.1.3/angularfire.min.js"></script>
     <script src="js/validation.js"></script>
@@ -80,7 +80,9 @@
 											
 
 											<!--class a-btn replaced by button class-->
-											<a href="wordcloud.html" ng-show="!isValid(courseID, question)" target="_blank" class="button" type="button" ng-click="submitData(courseID, question); setID(courseID, question); $event.stopPropagation();"><span>&#9658;</span>{{Ctrl.btnSubmit}} WordCloud</a>
+											<a href="wordcloud.html" ng-show="!isValid(courseID, question)" target="_blank" class="btn btn-default" type="button" ng-click="submitData(courseID, question); setID(courseID, question); $event.stopPropagation();"><span class="glyphicon glyphicon-play" style="padding-right:5px"aria-hidden="true"></span>{{Ctrl.btnSubmit}} WordCloud</a>
+
+											
 
 										</form>
 									</div><!--End of .body-queestion-->
@@ -102,7 +104,7 @@
 											<input type="checkbox" ng-true-value="'true'" ng-false-value="'false'" ng-model="setActive" name="setActive" value="Active">Set as active question</input>
 
 											<p id="verification"></p>
-											<a ng-controller="SaveController" type="button" id="save-element" class="save-element button" ng-click="saveData(ID, question, setActive);$event.stopPropagation();" value={{Ctrl.btnSave}}><span><i class="fa fa-plus"></i></span>Save question</a>
+											<a ng-controller="SaveController" type="button" id="save-element" class="save-element btn btn-default" ng-click="saveData(ID, question, setActive);$event.stopPropagation();" value={{Ctrl.btnSave}}><span class="glyphicon glyphicon-saved" style="padding-right:5px"aria-hidden="true"></span>Save question</a>
 										</form>
 
 									</div><!--End of .body-queestion-->
@@ -120,7 +122,7 @@
 										<p id="current-courseID">You are currently viewing ID: </p>
 	                					<button id="change-courseID">Change courseID</button>
 										<input ng-model="cID" id="ID" type="text" placeholder="Write ID to get saved questions"></input>
-										<a id="get-btn" class="save-element button" ng-click="getListData(cID); $event.stopPropagation();" value="Get"><span><i class="fa fa-arrow-down"></i></span>Get questions</a>						
+										<a id="get-btn" class="save-element btn btn-default" aria-label="Right Align" ng-click="getListData(cID); $event.stopPropagation();" value="Get"><span class="glyphicon glyphicon-list" style="padding-right:5px"aria-hidden="true"></span>Get questions</a>						
 										<div class="questions"></div>
 									</div>
 								</div>
