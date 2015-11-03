@@ -32,6 +32,8 @@ var lclStorageID = "";
                     answer.set({'testkey':'XX'});
                     $("i[class*='fa-play-circle']").remove();
                     $(".questions i[class*='fa-check-square-o']").addClass('fa-square-o').removeClass('fa-check-square-o');
+                    $('.body-view-question li').addClass('question');
+                    $('.body-view-question li').removeAttr('id');
                     active_question.update({"active_question" : question});
                     new_Question.set(question);
                     
@@ -113,6 +115,8 @@ var lclStorageID = "";
                     if ($('#active-chk').prop('checked') ){
                         $("i[class*='fa-play-circle']").remove();
                         $(".questions i[class*='fa-check-square-o']").addClass('fa-square-o').removeClass('fa-check-square-o');
+                        $('.body-view-question li').addClass('question');
+                        $('.body-view-question li').removeAttr('id');
                         ref.child(courseID).update({'active_question' : question});
                         new_Question.set(question);
 //THIS IS WHERE I THINK I SHOULD SET ANSWERS TO NULL
