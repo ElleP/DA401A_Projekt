@@ -63,73 +63,62 @@
 		<h2>Start a WordCloud instantly - just add a question</h2>
 	</div>
 		<div ng-controller="FirebaseController" class="container">
-			<div id="row" >
+			<div class="row" >
 				<div class="col-md-12" ng-controller="MessageController as Ctrl">
-
-						<div class="box-add">
-							<div class="row" >
-								<div class="col-md-10 col-md-offset-1">
-									<div class="body-question">
+					<div class="box-add">
+						<div class="row" >
+							<div class="col-md-10 col-md-offset-1">
+								<div class="body-question">
+									
+									<form name="quickstart" ng-controller="LocalStorageController" novalidate>
+										<input ng-model="courseID" id="courseID" type="text" placeholder={{Ctrl.msgID}} required/>
+										<input ng-model="question" id="question" type="text" placeholder={{Ctrl.msgInput}} required/>
+										<p class="error" id="verification" ng-show="quickstart.courseID.$error.required">Enter a new id</p>
+										<p class="error" id="verfication" ng-show="quickstart.question.$error.required">What do you want to ask?</p>
 										
-										<form name="quickstart" ng-controller="LocalStorageController" novalidate>
-											<input ng-model="courseID" id="courseID" type="text" placeholder={{Ctrl.msgID}} required/>
-											<input ng-model="question" id="question" type="text" placeholder={{Ctrl.msgInput}} required/>
-											<p class="error" id="verification" ng-show="quickstart.courseID.$error.required">Enter a new id</p>
-											<p class="error" id="verfication" ng-show="quickstart.question.$error.required">What do you want to ask?</p>
-											
 
-											<!--class a-btn replaced by button class-->
-											<a href="wordcloud.html" ng-show="!isValid(courseID, question)" target="_blank" class="btn btn-default" ng-click="submitData(courseID, question); setID(courseID, question); $event.stopPropagation();"><span class="glyphicon glyphicon-play" style="padding-right:5px"aria-hidden="true"></span>{{Ctrl.btnSubmit}} WordCloud</a>
+										<!--class a-btn replaced by button class-->
+										<a href="wordcloud.html" ng-show="!isValid(courseID, question)" target="_blank" class="btn btn-default" ng-click="submitData(courseID, question); setID(courseID, question); $event.stopPropagation();"><span class="glyphicon glyphicon-play" style="padding-right:5px"aria-hidden="true"></span>{{Ctrl.btnSubmit}} WordCloud</a>
+									</form>
+								</div><!--End of .body-question-->
+							</div><!--End of .col-->
+						</div><!--End of .row-->
+					</div><!--End of .box-add-->
 
+					<div class="box-new" style="display:none">
+						<div class="row" >
+							<div class="col-md-10 col-md-offset-1">
+								<div class="body-question">
+									
+									<form>
+										<input ng-model="ID" id="courseID" type="text" placeholder={{Ctrl.msgID}}></input>
+										<input ng-model="question" id="question" type="text" placeholder={{Ctrl.msgInput}}></input><br>
+										<input type="checkbox" ng-model="setActive" ng-true-value="'true'" ng-false-value="'false'" name="setActive" value="Active">Set as active question</input>
 
+										<p id="verification"></p>
+										<a ng-controller="SaveController" id="save-element" class="save-element btn btn-default" ng-click="saveData(ID, question, setActive);$event.stopPropagation();" value={{Ctrl.btnSave}}><span class="glyphicon glyphicon-saved" style="padding-right:5px" aria-hidden="true"></span>Save question</a>
+									</form>
 
-										</form>
-									</div><!--End of .body-queestion-->
-								</div>
-							</div>
-						</div><!--End of .box-add-->
-
-						<div class="box-new" style="display:none">
-							<!--<div class="header-question">
-								<h2>Save questions to ID</h2>
-							</div>-->
-							<div class="row" >
-								<div class="col-md-10 col-md-offset-1">
-									<div class="body-question">
-										
-										<form>
-											<input ng-model="ID" id="courseID" type="text" placeholder={{Ctrl.msgID}}></input>
-											<input ng-model="question" id="question" type="text" placeholder={{Ctrl.msgInput}}></input><br>
-											<input type="checkbox" ng-true-value="'true'" ng-false-value="'false'" ng-model="setActive" name="setActive" value="Active">Set as active question</input>
-
-											<p id="verification"></p>
-											<a ng-controller="SaveController" id="save-element" class="save-element btn btn-default" ng-click="saveData(ID, question, setActive);$event.stopPropagation();" value={{Ctrl.btnSave}}><span class="glyphicon glyphicon-saved" style="padding-right:5px" aria-hidden="true"></span>Save question</a>
-										</form>
-
-									</div><!--End of .body-queestion-->
-								</div> <!--End of .col-md-10-->
-							</div> <!--End of .row-->
-						</div><!--End of .box-add-->
-		
-						<div class="box-view" style="display:none" ng-controller="SaveController">
-							<!--<div class="header-view-question">
-								<h2>View saved questions for an ID</h2>
-							</div>-->
-							<div class="row" >
-								<div class="col-md-10 col-md-offset-1">
-									<div class="body-view-question">
-										<p id="current-courseID">You are currently viewing ID: </p>
-	                					<button id="change-courseID">Change courseID</button>
-										<input ng-model="cID" id="ID" type="text" placeholder="Write ID to get saved questions"/>
-										<a id="get-btn" class="save-element btn btn-default" aria-label="Right Align" ng-click="getListData(cID); $event.stopPropagation();" value="Get"><span class="glyphicon glyphicon-list" style="padding-right:5px" aria-hidden="true"></span>Get questions</a>						
-										<div class="questions"></div>
-									</div>
-								</div>
-							</div>
-						</div> <!--end of .box-view-->
-					</div><!--End of .row-->
+								</div><!--End of .body-question-->
+							</div> <!--End of .col-md-10-->
+						</div> <!--End of .row-->
+					</div><!--End of .box-add-->
+	
+					<div class="box-view" style="display:none" ng-controller="SaveController">
+						<div class="row" >
+							<div class="col-md-10 col-md-offset-1">
+								<div class="body-view-question">
+									<p id="current-courseID">You are currently viewing ID: </p>
+                					<button id="change-courseID">Change courseID</button>
+									<input ng-model="cID" id="ID" type="text" placeholder="Write ID to get saved questions"/>
+									<a id="get-btn" class="save-element btn btn-default" aria-label="Right Align" ng-click="getListData(cID); $event.stopPropagation();" value="Get"><span class="glyphicon glyphicon-list" style="padding-right:5px" aria-hidden="true"></span>Get questions</a>						
+									<div class="questions"></div>
+								</div><!--End of .body-view-question-->
+							</div><!--End of .col-->
+						</div><!--End of .row-->
+					</div> <!--end of .box-view-->
 				</div><!--End of .col-->
 			</div><!--End of .row-->
-		</div><!--End of wrapper-->
+		</div><!--End of .container-->
 	</body>
 </html>
