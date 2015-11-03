@@ -292,26 +292,16 @@ input:focus::-webkit-input-placeholder {
 }
 
 #wordcloud-header{
-	height:40px;
+	height:50px;
 	margin-top: 0px;
 }
 
 #wordcloud-header a{
-	text-align: center;
-	width:13%;
 	font-family: 'Muli', sans-serif;
-	float:right;
-	padding: 1%;
-	margin: 5% 2% 0 0 ;
-	height:18px;
-	color:#fff;
-	cursor:pointer;
-	background-color: rgba(157,28,37,1);
-	border-radius:5px;
-	text-decoration: none;
 	z-index:99;
 	position:absolute;
-	right:0px;
+	right: 30px!important;
+    margin-right: -.1%;
 }
 
 #wordcloud-header img{

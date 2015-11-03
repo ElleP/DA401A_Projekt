@@ -18,14 +18,20 @@
 
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 		<script type="text/javascript" src="js/script.js"></script>
+		
+		<!--Bootstrap-->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 
 	</head>
 	<body>
 		<header id="wordcloud-header" ng-controller="CloudController as mgr">
 			<img src="img/instantify_ver3.png" alt="Logo">
-			<a ng-click="mgr.getData()" id="genCloud">Generate WordCloud</a>
-			<a id="save-canvas">Save WordCloud to file</a>
-			
+			<a ng-click="mgr.getData()" id="genCloud" class="btn btn-default"><span class="glyphicon glyphicon-cloud-download" style="padding-right:5px"aria-hidden="true"></span>Generate WordCloud</a>
+			<a id="save-canvas" class="btn btn-default"><span class="glyphicon glyphicon-picture" style="padding-right:5px"aria-hidden="true"></span>Save WordCloud as image</a>
+
+
+
 		</header>
 		<div id="wordcloud" ng-controller="CloudController as ctrl">
 			<h1></h1>
