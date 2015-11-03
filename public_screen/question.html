@@ -1,4 +1,3 @@
-<!--HTMLfile for Instantify questions screen-->
 <!DOCTYPE html>
 <html ng-app="app">
 
@@ -37,25 +36,25 @@
 
 		<a href="#" id="add-to-cloud">
 			<div class="nav_a add-to-cloud active">
-				<img src="img/cloud_add_white.png"/>
+				<img src="img/cloud_add_white.png" alt="menu image for add to cloud"/>
 				<p>Instant WordCloud</p>
 			</div>
 		</a>
 			<a href="#" id="add-question">
 			<div class="nav_a add-question">
-				<img src="img/add182.png"/>
+				<img src="img/add182.png" alt="menu image for add questions"/>
 				<p>Add questions to ID</p>
 			</div>
 		</a>
 		<a href="#" id="question-list">
 			<div class="nav_a question-list">
-				<img src="img/lists10.png"/>
+				<img src="img/lists10.png" alt="menu image for get questionslist"/>
 				<p>My Question List</p>
 			</div>
 		</a>
 		<a href="#" id="about">
 			<div class="nav_a about">
-				<img src="img/information15.png"/>
+				<img src="img/information15.png" alt="menu image for about instantify"/>
 				<p>About Instantify</p>
 			</div>
 		</a>
@@ -68,21 +67,21 @@
 				<div class="col-md-12" ng-controller="MessageController as Ctrl">
 
 						<div class="box-add">
-							<div id="row" >
+							<div class="row" >
 								<div class="col-md-10 col-md-offset-1">
 									<div class="body-question">
 										
 										<form name="quickstart" ng-controller="LocalStorageController" novalidate>
-											<input ng-model="courseID" id="courseID" type="text" placeholder={{Ctrl.msgID}} required></input>
-											<input ng-model="question" id="question" type="text" placeholder={{Ctrl.msgInput}} required></input>
+											<input ng-model="courseID" id="courseID" type="text" placeholder={{Ctrl.msgID}} required/>
+											<input ng-model="question" id="question" type="text" placeholder={{Ctrl.msgInput}} required/>
 											<p class="error" id="verification" ng-show="quickstart.courseID.$error.required">Enter a new id</p>
 											<p class="error" id="verfication" ng-show="quickstart.question.$error.required">What do you want to ask?</p>
 											
 
 											<!--class a-btn replaced by button class-->
-											<a href="wordcloud.html" ng-show="!isValid(courseID, question)" target="_blank" class="btn btn-default" type="button" ng-click="submitData(courseID, question); setID(courseID, question); $event.stopPropagation();"><span class="glyphicon glyphicon-play" style="padding-right:5px"aria-hidden="true"></span>{{Ctrl.btnSubmit}} WordCloud</a>
+											<a href="wordcloud.html" ng-show="!isValid(courseID, question)" target="_blank" class="btn btn-default" ng-click="submitData(courseID, question); setID(courseID, question); $event.stopPropagation();"><span class="glyphicon glyphicon-play" style="padding-right:5px"aria-hidden="true"></span>{{Ctrl.btnSubmit}} WordCloud</a>
 
-											
+
 
 										</form>
 									</div><!--End of .body-queestion-->
@@ -94,17 +93,17 @@
 							<!--<div class="header-question">
 								<h2>Save questions to ID</h2>
 							</div>-->
-							<div id="row" >
+							<div class="row" >
 								<div class="col-md-10 col-md-offset-1">
 									<div class="body-question">
 										
 										<form>
 											<input ng-model="ID" id="courseID" type="text" placeholder={{Ctrl.msgID}}></input>
-											<input ng-model="question" id="question" type="text" placeholder={{Ctrl.msgInput}}></input><br>
+											<input ng-model="question" id="question" type="text" placeholder={{Ctrl.msgInput}}/><br>
 											<input type="checkbox" ng-true-value="'true'" ng-false-value="'false'" ng-model="setActive" name="setActive" value="Active">Set as active question</input>
 
 											<p id="verification"></p>
-											<a ng-controller="SaveController" type="button" id="save-element" class="save-element btn btn-default" ng-click="saveData(ID, question, setActive);$event.stopPropagation();" value={{Ctrl.btnSave}}><span class="glyphicon glyphicon-saved" style="padding-right:5px"aria-hidden="true"></span>Save question</a>
+											<a ng-controller="SaveController" id="save-element" class="save-element btn btn-default" ng-click="saveData(ID, question, setActive);$event.stopPropagation();" value={{Ctrl.btnSave}}><span class="glyphicon glyphicon-saved" style="padding-right:5px" aria-hidden="true"></span>Save question</a>
 										</form>
 
 									</div><!--End of .body-queestion-->
@@ -116,13 +115,13 @@
 							<!--<div class="header-view-question">
 								<h2>View saved questions for an ID</h2>
 							</div>-->
-							<div id="row" >
+							<div class="row" >
 								<div class="col-md-10 col-md-offset-1">
 									<div class="body-view-question">
 										<p id="current-courseID">You are currently viewing ID: </p>
 	                					<button id="change-courseID">Change courseID</button>
-										<input ng-model="cID" id="ID" type="text" placeholder="Write ID to get saved questions"></input>
-										<a id="get-btn" class="save-element btn btn-default" aria-label="Right Align" ng-click="getListData(cID); $event.stopPropagation();" value="Get"><span class="glyphicon glyphicon-list" style="padding-right:5px"aria-hidden="true"></span>Get questions</a>						
+										<input ng-model="cID" id="ID" type="text" placeholder="Write ID to get saved questions"/>
+										<a id="get-btn" class="save-element btn btn-default" aria-label="Right Align" ng-click="getListData(cID); $event.stopPropagation();" value="Get"><span class="glyphicon glyphicon-list" style="padding-right:5px" aria-hidden="true"></span>Get questions</a>						
 										<div class="questions"></div>
 									</div>
 								</div>
