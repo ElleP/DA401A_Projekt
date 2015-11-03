@@ -91,8 +91,8 @@ var lclStorageID = "";
 
     app.controller('SaveController', function($scope, $firebaseArray){  
 
-        $scope.saveData = function(courseID, question, setActive){
-            alert(setActive);
+        $scope.saveData = function(courseID, question){
+
             tempID = courseID;
             //tempQuestionList.push(question);
             var ref = new Firebase("https://instantify.firebaseio.com/");
@@ -107,7 +107,7 @@ var lclStorageID = "";
 
                 if(isChild){
 //I THINK THIS MEANS IS SETACTIVE EXISTS?
-                    if (setActive){
+                    if ($('#active-chk').prop('checked') ){
                         $("i[class*='fa-play-circle']").remove();
                         $(".questions i[class*='fa-check-square-o']").addClass('fa-square-o').removeClass('fa-check-square-o');
                         ref.child(courseID).update({'active_question' : question});
