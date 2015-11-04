@@ -26,10 +26,8 @@ var lclStorageID = "";
                 var new_Question = q_Queue.push();
                 
                 if(isChild){
-
-    //THIS IS WHERE I TRY TO RESET ANSWERS
-
-                    answer.set({'testkey':'XX'});
+                    answer.set({'dummy_key' : 'XX'});
+                    alert("");
                     $("i[class*='fa-play-circle']").remove();
                     $(".questions i[class*='fa-check-square-o']").addClass('fa-square-o').removeClass('fa-check-square-o');
                     $('.body-view-question li').addClass('question');
@@ -84,6 +82,22 @@ var lclStorageID = "";
                 return false;
             } 
         }
+
+        //Had problems setting a new controller in the html so just put this method here - sorry 'bout it!'
+        $scope.isValid = function(data){
+                console.log("validating");
+            if(data == undefined){
+                console.log(data);
+                console.log("data undefined");
+                return true;
+            }
+            
+            else{
+                console.log(data);
+                console.log("validation success");
+                return false;
+            } 
+        }
     });
 
     app.controller('MessageController', function($scope){
@@ -99,31 +113,25 @@ var lclStorageID = "";
         $scope.saveData = function(courseID, question){
 
             tempID = courseID;
-            //tempQuestionList.push(question);
             var ref = new Firebase("https://instantify.firebaseio.com/");
-            //var pushRef = ref.child('question_queue');
             ref.once("value", function(snapshot) {
             var isChild = snapshot.hasChild(courseID);
-//I CHANGED PUSHREF TO Q_QUEUE AS I THINK THIS IS WHAT THAT WAS SUPPOSED TO REPRESENT
             var q_Queue = ref.child(courseID).child('question_queue');
-//I CHANGED 'PUSHPUSHREF' TO NEW_QUESTION AS I THINK THIS IS WHAT THAT WAS SUPPOSED TO REPRESENT
             var new_Question = q_Queue.push(); 
-            //var answers= ref.child(courseID).child('answers');
+            var answer= ref.child(courseID).child('answers');
 
                 if(isChild){
-//I THINK THIS MEANS IS SETACTIVE EXISTS?
                     if ($('#active-chk').prop('checked') ){
                         $("i[class*='fa-play-circle']").remove();
                         $(".questions i[class*='fa-check-square-o']").addClass('fa-square-o').removeClass('fa-check-square-o');
                         $('.body-view-question li').addClass('question');
                         $('.body-view-question li').removeAttr('id');
+                        answer.set({'dummy_key' : 'XX'});  
                         ref.child(courseID).update({'active_question' : question});
                         new_Question.set(question);
-//THIS IS WHERE I THINK I SHOULD SET ANSWERS TO NULL
-                        //answers.set({'XX':'xx'}); //reset Answers
                     }
                     else{
-                        alert("Set New Question");
+                        
                         new_Question.set(question);
                     }
                 }
@@ -142,7 +150,6 @@ var lclStorageID = "";
                     });
                 }
             $('#verification').text('Frågan "' + question + '" has been added to ' + courseID).css({'color':'rgba(127,19,27,1)', 'position':'relative', 'top':'10px'});
-            //$('#verification').prepend('<i class="fa fa-check"></i>');
             $('input[type=text]').val('');
             $('input[type=checkbox]').attr('checked',false);
 
@@ -151,15 +158,14 @@ var lclStorageID = "";
 
         $scope.getListData = function(courseID){
             tempID = courseID;
-            var active = new Firebase("https://instantify.firebaseio.com/" + courseID).child('active_question');
-            var ref = new Firebase("https://instantify.firebaseio.com/" + courseID + "/question_queue");
-            //var answers= ref.child(courseID).child('answers');
+            var firebaseRef = new Firebase("https://instantify.firebaseio.com/" + courseID);
+            
+            var active = firebaseRef.child('active_question');
+            var ref = firebaseRef.child('question_queue');
 
             ref.on('child_added', function(snapshot) {
                 active.once("value", function(data) {
                     active_question = data.val(); 
-//THIS IS WHERE I THINK I SHOULD SET ANSWERS TO NULL
-                    //answers.set({'answers':'xx'}); //Reset Answers
                     if(snapshot.val() == active_question){
                         $('.questions').prepend('<li id="active" data-value="' + snapshot.key() + '">' +  active_question + '</li></i><span class="icons"><a href="wordcloud.html" target="_blank"><i class="fa fa-play-circle fa-2x"></i></a><i class="fa fa-trash-o"></i><i class="fa fa-check-square-o"></i></span><hr>');
                     }
@@ -217,6 +223,8 @@ var lclStorageID = "";
                 $(this).parent().append('<i class="fa fa-check-square-o"></i>');
                 $(this).remove();
                 var ref = new Firebase("https://instantify.firebaseio.com/" + tempID);
+                var answer= ref.child('answers');
+                answer.set({'dummy_key' : 'XX'}); 
                 ref.update({'active_question' : question});
             }
         })

@@ -96,7 +96,7 @@
 										<input type="checkbox" id="active-chk" ng-model="setActive" name="setActive" value="Active">Set as active question</input>
 
 										<p id="verification"></p>
-										<a ng-controller="SaveController" id="save-element" class="save-element btn btn-default" ng-click="saveData(ID, question);$event.stopPropagation();" value={{Ctrl.btnSave}}><span class="glyphicon glyphicon-saved" style="padding-right:5px" aria-hidden="true"></span>Save question</a>
+										<a ng-controller="SaveController" id="save-element" ng-show="!isValid(ID, question)" class="save-element btn btn-default" ng-click="saveData(ID, question);$event.stopPropagation();" value={{Ctrl.btnSave}}><span class="glyphicon glyphicon-saved" style="padding-right:5px" aria-hidden="true"></span>Save question</a>
 									</form>
 
 								</div><!--End of .body-question-->
@@ -110,8 +110,8 @@
 								<div class="body-view-question">
 									<p id="current-courseID">You are currently viewing ID: </p>
                 					<button id="change-courseID">Change courseID</button>
-									<input ng-model="cID" id="ID" type="text" placeholder="Write ID to get saved questions"/>
-									<a id="get-btn" class="save-element btn btn-default" aria-label="Right Align" ng-click="getListData(cID); $event.stopPropagation();" value="Get"><span class="glyphicon glyphicon-list" style="padding-right:5px" aria-hidden="true"></span>Get questions</a>						
+									<input ng-model="cID" id="ID" type="text" placeholder="Enter ID to get saved questions"/>
+									<a id="get-btn" class="save-element btn btn-default" ng-hide="!isValid(cID)" aria-label="Right Align" ng-click="getListData(cID); $event.stopPropagation();" value="Get"><span class="glyphicon glyphicon-list" style="padding-right:5px" aria-hidden="true"></span>Get questions</a>						
 									<div class="questions"></div>
 								</div><!--End of .body-view-question-->
 							</div><!--End of .col-->
