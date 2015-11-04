@@ -143,7 +143,7 @@ var lclStorageID = "";
                         question_queue: tempQuery
                     });
                 }
-            $('#verification').text('Frågan "' + question + '" has been added to ' + courseID).css({'color':'rgba(127,19,27,1)', 'position':'relative', 'top':'10px'});
+            $('#verification').text('The question "' + question + '" has been added to ' + courseID).css({'color':'rgba(127,19,27,1)', 'position':'relative', 'top':'0px'});
             $('input[type=text]').val('');
             $('input[type=checkbox]').attr('checked',false);
 

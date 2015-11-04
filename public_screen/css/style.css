@@ -94,14 +94,14 @@ nav a{
 	margin:auto;
 }
 /*Styling for angular validation*/
-.ng-invalid.ng-dirty{
+/*.ng-invalid.ng-dirty{
   border-color:red
 }
 
 /*Styling for angular validation*/
-.ng-valid.ng-dirty{
+/*.ng-valid.ng-dirty{
   border-color:green
-}
+}*/
 
 .header-question h2{
 	font-family: 'Muli', sans-serif;
@@ -271,6 +271,7 @@ input:focus::-webkit-input-placeholder {
     margin: 0% 51% 6.5% 0%;
 	height:30px;
 }
+
 #verification{
 	color: rgb(127, 19, 27);
     position: relative;

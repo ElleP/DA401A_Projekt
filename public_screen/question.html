@@ -70,13 +70,10 @@
 							<div class="col-md-10 col-md-offset-1">
 								<div class="body-question">
 									
-									<form name="quickstart" ng-controller="LocalStorageController" novalidate>
-										<input ng-model="courseID" id="courseID" type="text" placeholder={{Ctrl.msgID}} required/>
-										<input ng-model="question" id="question" type="text" placeholder={{Ctrl.msgInput}} required/>
-										<p class="error" id="verification" ng-show="quickstart.courseID.$error.required">Enter a new id</p>
-										<p class="error" id="verfication" ng-show="quickstart.question.$error.required">What do you want to ask?</p>
-										
-
+									<form name="quickstart" ng-controller="LocalStorageController">
+										<input ng-model="courseID" id="courseID" type="text" placeholder={{Ctrl.msgID}} required></input>
+										<input ng-model="question" id="question" type="text" placeholder={{Ctrl.msgInput}} ></input>
+							
 										<!--class a-btn replaced by button class-->
 										<a href="wordcloud.html" ng-show="!isValid(courseID, question)" target="_blank" class="btn btn-default" ng-click="submitData(courseID, question); setID(courseID, question); $event.stopPropagation();"><span class="glyphicon glyphicon-play" style="padding-right:5px"aria-hidden="true"></span>{{Ctrl.btnSubmit}} WordCloud</a>
 									</form>
@@ -110,7 +107,7 @@
 								<div class="body-view-question">
 									<p id="current-courseID">You are currently viewing ID: </p>
                 					<button id="change-courseID">Change courseID</button>
-									<input ng-model="cID" id="ID" type="text" placeholder="Enter ID to get saved questions"/>
+									<input ng-model="cID" id="ID" type="text" placeholder="Enter ID to get saved questions"></input>
 									<a id="get-btn" class="save-element btn btn-default" aria-label="Right Align" ng-click="getListData(cID); $event.stopPropagation();" value="Get"><span class="glyphicon glyphicon-list" style="padding-right:5px" aria-hidden="true"></span>Get questions</a>						
 									<div class="questions"></div>
 								</div><!--End of .body-view-question-->
