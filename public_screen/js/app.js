@@ -14,9 +14,7 @@ var lclStorageID = "";
         $scope.submitData = function(courseID, question){
             alert("submitData");
             lclStorageID = courseID;
-            /*$('.body-view-question li').remove();
-            $('.body-view-question span').remove();
-            $('.body-view-question hr').remove();*/
+
             var ref = new Firebase("https://instantify.firebaseio.com");
             var active_question = ref.child(courseID);
             var answer = ref.child(courseID).child('answers');
@@ -176,10 +174,9 @@ var lclStorageID = "";
             });
         };
 
-       $(function(){
+    $(function(){
         $('#get-btn').on("click", function(event){
             $('#ID').val('');
-            //Byter ut input fält till paragraf med kursID
             $('#ID').css({'display':'none'});
             $('#current-courseID').css({
                 'display':'block'
@@ -247,14 +244,11 @@ var lclStorageID = "";
         })
 
         $('.body-view-question').on('click', '.fa-play-circle', function(event){
-        alert('clicked');
-        var question = $(this).parent().parent().prev().text();
-        var id = $('#current-courseID').text();
-    
-        localStorage.setItem('question', question);
-        localStorage.setItem('id', id);
-        //event.stopPropagation();
+            var question = $(this).parent().parent().prev().text();
+            var id = $('#current-courseID').text();
         
+            localStorage.setItem('question', question);
+            localStorage.setItem('id', id);        
         })
 
         $('.question-list').on('click', function(){
@@ -269,22 +263,17 @@ var lclStorageID = "";
             $('.box-new').css({'display':'none'})
 
             $('input[type=text]').val('');
-            //$('#get-btn').css({'display':'block'})
         })
 
         $('.add-to-cloud').on('click', function(){
             localStorage.clear();
             $('#verification').empty();
             $('.header-question h2').text('Start a WordCloud instantly - just add a question');
-            //$('.questions').remove();
-            //$('.body-view-question').append('<div class="questions"></div>')
             $('nav div').removeClass('active');
             $(this).addClass('active');
             $('.box-view').css({'display':'none'})
-            //$('#save-element').css({'display':'none'})
             $('.box-new').css({'display':'none'})
             $('.box-add').css({'display':'block'})
-            //$('.a-btn').css({'display':'block'})
 
             $('input[type=text]').val('');
         })
@@ -293,15 +282,12 @@ var lclStorageID = "";
         $('.add-question').on('click', function(){
             $('#verification').empty();
             $('.header-question h2').text('Save questions to ID');
-            //$('.questions').remove();
-            //$('.body-view-question').append('<div class="questions"></div>')
+
             $('nav div').removeClass('active');
             $(this).addClass('active');
             $('.box-view').css({'display':'none'})
-            //$('.a-btn').css({'display':'none'})
             $('.box-add').css({'display':'none'})
             $('.box-new').css({'display':'block'})
-            //$('#save-element').css({'display':'block'})
 
             $('input[type=text]').val('');
         })
