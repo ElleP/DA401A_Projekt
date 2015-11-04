@@ -12,7 +12,6 @@ var lclStorageID = "";
         //FirebaseController responsible for sending data to Firebase
 
         $scope.submitData = function(courseID, question){
-            alert("submitData");
             lclStorageID = courseID;
 
             var ref = new Firebase("https://instantify.firebaseio.com");
@@ -25,7 +24,6 @@ var lclStorageID = "";
                 
                 if(isChild){
                     answer.set({'dummy_key' : 'XX'});
-                    alert("");
                     $("i[class*='fa-play-circle']").remove();
                     $(".questions i[class*='fa-check-square-o']").addClass('fa-square-o').removeClass('fa-check-square-o');
                     $('.body-view-question li').addClass('question');
@@ -35,7 +33,6 @@ var lclStorageID = "";
                     
                 }
                 else{
-                    alert("new question");
                     var postID = new_Question.key();
                     var dataTable = ref.child(courseID);
                     var tempQuery = {};
@@ -134,7 +131,6 @@ var lclStorageID = "";
                     }
                 }
                 else{
-                    alert("Else");
                     var postID = new_Question.key();
                     var dataTable = ref.child(courseID);
                     var tempQuery = {};
