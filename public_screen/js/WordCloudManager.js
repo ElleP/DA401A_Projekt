@@ -48,7 +48,7 @@ var courseID = localStorage.id;
 		};
 
 		var formatList = function(data){
-			var temp = data.indexOf("xx");
+			var temp = data.indexOf("XX");
 			data.pop(temp);
 
 			var a = [], b = [], prev;
